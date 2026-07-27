@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local Codex/agent metadata
+.codex/
+.agents/
+
+# Manuscript/build artifacts
+*.aux
+*.log
+*.out
+*.bbl
+*.blg
+*.gz
+*.spl
+*.synctex.gz
+*.docx
+*.pdf
+*.tex
+
+# Large generated simulation dumps
+simulation_results_*.xlsx
+graphify-out/
+backup/
+scratch/

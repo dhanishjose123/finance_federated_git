@@ -1,0 +1,21 @@
+EGT-only borrower model selection experiment
+================================================================================
+Design:
+- Pure RL base APR + EGT borrower-screening variants only
+- Borrower RL and fixed-rate no-screening baselines are excluded
+- Capitals: 1M, 5M, 10M
+- Borrower EGT alpha: 0.3
+- Borrower EGT eta: 200.0
+- Default scenarios: none, low, medium, high
+- EGT candidates: 6
+- Scenario runs: 36
+
+Best EGT borrower model: egt
+Best EGT financier: Fin_RL_Borrower_EGT
+Best EGT total final capital: 199,856,923.02
+
+System run metrics:
+- System_Average_Utilization is the average run-level utilization across financiers.
+- System_Default_Amount_To_Total_Capital_Rate is total default amount divided by total initial capital across financiers in that run.
+
+Excel written to: R:\Other computers\My Laptop\basics\egt_model_selection\egt_only_model_selection_results.xlsx

@@ -1,0 +1,172 @@
+Model Development and Selection Flow
+====================================
+
+Objective
+---------
+The main objective of the experiments is to maximize final financier capital.
+
+Selection metric:
+
+    Highest final capital
+
+
+Overall Approach
+----------------
+The work proceeds in two stages:
+
+1. Build and tune the pure finance RL model.
+2. Build EGT models using the same payoff signal, select the best EGT update
+   rule, and then optimize its payoff weights.
+
+
+Stage 1: Pure Finance RL Model
+------------------------------
+First, a pure finance RL APR model was created.
+
+This model uses a payoff signal based on:
+
+    return reward
+    utilization reward
+    capital growth reward
+    capital decline penalty
+
+Payoff structure:
+
+    raw_payoff =
+        return_weight * profit_ratio
+      + utilization_weight * utilization
+      + growth_weight * capital_growth_reward
+      - decline_weight * capital_decline_penalty
+
+The pure RL model then uses this payoff in Q-learning to choose APR adjustment
+actions.
+
+After creating the pure RL model, the payoff weights were optimized to improve
+final capital.
+
+
+Stage 2: EGT Models Using the Same Payoff
+-----------------------------------------
+After the pure RL payoff was defined, the same payoff idea was reused for EGT
+APR agents.
+
+The goal was to test whether EGT dynamics could adjust APR effectively using
+the same reward/payoff information.
+
+Several EGT update rules were tested:
+
+    Logit EGT
+    Replicator dynamics
+    Fermi imitation dynamics
+    Aspiration-based EGT
+
+All these EGT variants used the same payoff structure so that the comparison
+focused on the EGT model/dynamic itself, not on different reward definitions.
+
+
+EGT Model Selection
+-------------------
+The EGT models were compared using fixed payoff weights.
+
+The model with the highest final capital among the EGT payoff-based variants
+was selected as the best EGT update rule.
+
+In the current experiment, the Fermi EGT model performed best among the
+pure-RL-payoff EGT variants.
+
+Selected payoff-based EGT model:
+
+    Fin_EGT_Pure_RL_Fermi
+
+
+Next Step: Optimize Selected EGT Model
+--------------------------------------
+After selecting the best EGT update rule, the next step is to optimize the
+payoff weights for that selected EGT model.
+
+This means keeping the EGT model type fixed and searching for the best values
+of:
+
+    return weight
+    utilization weight
+    growth weight
+    decline weight
+
+The best weight set is the one that gives the highest final capital.
+
+
+Flowchart
+---------
+
+    Start
+      |
+      v
+    Define objective
+      |
+      |-- Objective: maximize final financier capital
+      v
+    Create pure finance RL APR model
+      |
+      v
+    Define pure RL payoff signal
+      |
+      |-- return reward
+      |-- utilization reward
+      |-- capital growth reward
+      |-- capital decline penalty
+      v
+    Optimize pure RL payoff weights
+      |
+      v
+    Use same payoff signal for EGT APR agents
+      |
+      v
+    Test multiple EGT update rules
+      |
+      |-- Logit EGT
+      |-- Replicator EGT
+      |-- Fermi EGT
+      |-- Aspiration EGT
+      v
+    Compare EGT models by final capital
+      |
+      v
+    Select best EGT model
+      |
+      |-- Current selected model: Fin_EGT_Pure_RL_Fermi
+      v
+    Optimize payoff weights for selected EGT model
+      |
+      v
+    Choose final model + weights with highest final capital
+      |
+      v
+    End
+
+
+Mermaid Flowchart
+-----------------
+
+```mermaid
+flowchart TD
+    A["Start"] --> B["Define objective: highest final capital"]
+    B --> C["Create pure finance RL APR model"]
+    C --> D["Define pure RL payoff signal"]
+    D --> E["Optimize pure RL payoff weights"]
+    E --> F["Reuse same payoff signal for EGT APR agents"]
+    F --> G["Test EGT update rules"]
+    G --> H1["Logit EGT"]
+    G --> H2["Replicator EGT"]
+    G --> H3["Fermi EGT"]
+    G --> H4["Aspiration EGT"]
+    H1 --> I["Compare final capital"]
+    H2 --> I
+    H3 --> I
+    H4 --> I
+    I --> J["Select best EGT model"]
+    J --> K["Current selected model: Fin_EGT_Pure_RL_Fermi"]
+    K --> L["Optimize payoff weights for selected EGT model"]
+    L --> M["Choose final model and weights with highest final capital"]
+    M --> N["End"]
+```
+

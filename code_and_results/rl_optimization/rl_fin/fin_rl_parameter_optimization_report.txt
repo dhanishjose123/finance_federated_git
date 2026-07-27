@@ -1,0 +1,17 @@
+Pure RL financier APR parameter optimization
+================================================================================
+Design:
+- Candidate: pure RL financier APR + no borrower screening
+- Competitors: fixed 6 none, fixed 8 none, fixed 10 none
+- Objective: maximize candidate total final capital across all runs
+- Capitals: 1M, 5M, 10M
+- Default scenarios: none, low, medium, high
+
+Best APR alpha: 0.25
+Best APR gamma: 0.95
+Best APR epsilon: 0.08
+Best APR grid: fine_1pp
+Best candidate total final capital: 254,390,711.44
+Candidate run wins: 12
+
+Excel written to: R:\Other computers\My Laptop\basics\rl_optimization\rl_fin\fin_rl_parameter_optimization_results.xlsx

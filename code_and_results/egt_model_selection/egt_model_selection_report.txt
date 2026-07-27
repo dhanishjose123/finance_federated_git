@@ -1,0 +1,23 @@
+EGT borrower model selection experiment
+================================================================================
+Design:
+- Pure RL base APR + each borrower screening model
+- Fixed 6%, 8%, 10% APR + no borrower screening baselines
+- Capitals: 1M, 5M, 10M
+- Borrower EGT alpha: 0.3
+- Borrower EGT eta: 200.0
+- Default scenarios: none, low, medium, high
+
+Overall best financier: Fin_RL_Borrower_RL
+Overall best borrower model: rl
+Overall best total final capital: 262,435,481.13
+
+System run metrics:
+- System_Average_Utilization is the average run-level utilization across financiers.
+- System_Default_Amount_To_Total_Capital_Rate is total default amount divided by total initial capital across financiers in that run.
+
+Best EGT borrower model: egt_linear_reinforcement
+Best EGT financier: Fin_RL_Borrower_EGT_Linear
+Best EGT total final capital: 194,638,283.73
+
+Excel written to: R:\Other computers\My Laptop\basics\egt_model_selection\egt_model_selection_results.xlsx
