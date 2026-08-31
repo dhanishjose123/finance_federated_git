@@ -1,0 +1,28 @@
+Regular borrower EGT parameter optimization
+================================================================================
+Design:
+- Candidate: pure RL financier APR + regular EGT borrower score
+- Competitors: borrower RL, fixed 6 none, fixed 8 none, fixed 10 none
+- Objective: maximize candidate total final capital across all runs
+- Capitals: 1M, 5M, 10M
+- Default scenarios: none, low, medium, high
+- Latest grid: alpha = {0.10, 0.30, 0.60}; eta = {100, 200, 300}
+
+Best EGT alpha: 0.3
+Best EGT eta: 200.0
+Best candidate total final capital: 275,686,576.66
+Candidate run wins: 28
+
+Latest ranking:
+Rank | alpha | eta | total final capital | avg final capital | avg return | avg utilization | defaults | wins
+1 | 0.30 | 200 | 275,686,576.66 | 7,657,960 | 1.283318 | 0.544417 | 1,284 | 28
+2 | 0.30 | 300 | 274,932,400 approx. | 7,637,012 | 1.262370 | 0.543213 | 1,281 | 28
+3 | 0.60 | 200 | 274,545,400 approx. | 7,626,262 | 1.251620 | 0.542707 | 1,328 | 27
+4 | 0.10 | 100 | 274,359,400 approx. | 7,621,095 | 1.246453 | 0.538999 | 1,281 | 27
+5 | 0.60 | 300 | 273,372,500 approx. | 7,593,680 | 1.219038 | 0.542656 | 1,298 | 26
+6 | 0.10 | 200 | 273,237,400 approx. | 7,589,928 | 1.254236 | 0.540824 | 1,633 | 27
+7 | 0.60 | 100 | 272,397,700 approx. | 7,566,604 | 1.191962 | 0.551132 | 1,456 | 27
+8 | 0.30 | 100 | 271,555,200 approx. | 7,543,200 | 1.168558 | 0.547568 | 1,289 | 26
+9 | 0.10 | 300 | 271,294,700 approx. | 7,535,964 | 1.217373 | 0.542287 | 1,951 | 25
+
+Excel written to: C:\Users\dhani\fabric_sfc\backend\simulations\python_sim\loan\basics\egt_optimization\egt_parameter_optimization_results.xlsx

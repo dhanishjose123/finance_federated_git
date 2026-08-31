@@ -1,0 +1,30 @@
+SCAFFOLD sensitivity test against isolated RL with 50 borrowers
+========================================================================
+Days: 2000
+Seeds: [709098, 436570, 831197]
+Capital levels per financier: [1000000.0, 5000000.0, 10000000.0]
+SCAFFOLD correction rates tested: [0.25, 0.5, 0.75, 1.0]
+Financiers per policy group: 3
+Non-IID primary share: 0.5
+Default scenarios: ['none_default', 'low_default', 'medium_default', 'high_default']
+Excel workbook saved: scaffold_sensitivity_50_borrowers\scaffold_sensitivity_50b_results.xlsx
+
+Best mean return gain: scaffold_lr=0.25, return delta=2.214 pp, default-rate delta=3.723 pp.
+
+Overall summary:
+ scaffold_lr wholesaler_policy  financiers  rows  total_initial_capital  total_final_capital  mean_final_capital  total_capital_change  total_defaults  total_loans  mean_default_amount_rate  mean_final_utilization  mean_return_pct  total_default_rate_pct  mean_final_utilization_pct               policy_label
+        0.25    fl_rl_scaffold           3   108            576000000.0         6.577369e+08        6.090157e+06          8.173695e+07            8755       107097                  0.055085                     0.0        14.190442                8.174832                         0.0 Federated RL with SCAFFOLD
+        0.25                rl           3   108            576000000.0         6.469162e+08        5.989965e+06          7.091622e+07           10576        93734                  0.068649                     0.0        12.311843               11.282992                         0.0                Isolated RL
+        0.50    fl_rl_scaffold           3   108            576000000.0         6.568747e+08        6.082173e+06          8.087468e+07            8946       103904                  0.055338                     0.0        14.040744                8.609871                         0.0 Federated RL with SCAFFOLD
+        0.50                rl           3   108            576000000.0         6.496642e+08        6.015410e+06          7.366425e+07           10221        96343                  0.065855                     0.0        12.788931               10.608970                         0.0                Isolated RL
+        0.75    fl_rl_scaffold           3   108            576000000.0         6.558668e+08        6.072841e+06          7.986684e+07            8528        99117                  0.053622                     0.0        13.865770                8.603973                         0.0 Federated RL with SCAFFOLD
+        0.75                rl           3   108            576000000.0         6.527054e+08        6.043568e+06          7.670537e+07           10012       100580                  0.067772                     0.0        13.316904                9.954265                         0.0                Isolated RL
+        1.00    fl_rl_scaffold           3   108            576000000.0         6.579345e+08        6.091986e+06          8.193449e+07            8744       102962                  0.057401                     0.0        14.224738                8.492454                         0.0 Federated RL with SCAFFOLD
+        1.00                rl           3   108            576000000.0         6.522294e+08        6.039161e+06          7.622939e+07           10202        97361                  0.068223                     0.0        13.234270               10.478528                         0.0                Isolated RL
+
+Win summary:
+ scaffold_lr  matched_runs  return_wins  default_wins  mean_delta_return_pp  mean_delta_default_pp
+        0.25            36           22            22              2.213742               3.723233
+        0.50            36           21            19              1.765540               1.887635
+        0.75            36           18            17              1.729236               1.165442
+        1.00            36           21            19              1.364720               1.911191

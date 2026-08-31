@@ -1,0 +1,34 @@
+Non-IID heterogeneity sensitivity check (FedAvg vs FedProx vs SCAFFOLD, c_lr=0.25 fixed)
+========================================================================================
+NOTE: 0.0 = fully shared/IID borrower pool, 1.0 = maximally skewed/non-IID.
+(This is the OPPOSITE direction to the label used in other stage reports --
+ see the docstring in this script for the traced formula.)
+Days: 2000
+Seeds: [709098, 436570, 831197]
+Capital levels per financier: [1000000.0, 5000000.0, 10000000.0]
+Non-IID levels tested: [0.0, 0.5, 1.0]
+SCAFFOLD correction rate (fixed): 0.25
+Financiers per policy group: 3
+Default scenarios: ['none_default', 'low_default', 'medium_default', 'high_default']
+Excel workbook saved with openpyxl: noniid_sensitivity_50_borrowers\noniid_sensitivity_50b_results.xlsx
+
+Overall summary by non-IID level and policy:
+ non_iid_level wholesaler_policy  financiers  runs  total_initial_capital  total_final_capital  mean_return_pct  total_defaults  total_loans  default_count_rate         policy_label
+           0.0             fl_rl           3   108            576000000.0         6.140742e+08         6.610103            9046        70890            0.134783    FedAvg (baseline)
+           0.0        fl_rl_prox           3   108            576000000.0         6.161906e+08         6.977540            9143        73712            0.129023              FedProx
+           0.0    fl_rl_scaffold           3   108            576000000.0         6.145414e+08         6.691218           10163        74561            0.142977 SCAFFOLD (c_lr=0.25)
+           0.5             fl_rl           3   108            576000000.0         6.210650e+08         7.823782            8172        74258            0.132331    FedAvg (baseline)
+           0.5        fl_rl_prox           3   108            576000000.0         6.211216e+08         7.833619            8214        73895            0.128104              FedProx
+           0.5    fl_rl_scaffold           3   108            576000000.0         6.179035e+08         7.274917            8248        67686            0.150490 SCAFFOLD (c_lr=0.25)
+           1.0             fl_rl           3   108            576000000.0         6.286665e+08         9.143490            6520        67979            0.301255    FedAvg (baseline)
+           1.0        fl_rl_prox           3   108            576000000.0         6.264713e+08         8.762373            7033        67541            0.300394              FedProx
+           1.0    fl_rl_scaffold           3   108            576000000.0         6.234904e+08         8.244867            8389        65169            0.328819 SCAFFOLD (c_lr=0.25)
+
+Matched comparison vs. FedAvg, by non-IID level:
+ non_iid_level                                 comparison  wins  mean_delta_return_pp  mean_delta_default_count_rate_pp
+           0.0              FedProx vs. FedAvg (baseline) 20/36              1.131221                         -0.575960
+           0.0 SCAFFOLD (c_lr=0.25) vs. FedAvg (baseline) 16/36             -0.268270                          0.819389
+           0.5              FedProx vs. FedAvg (baseline) 17/36             -0.072165                         -0.422699
+           0.5 SCAFFOLD (c_lr=0.25) vs. FedAvg (baseline) 16/36              0.767512                          1.815837
+           1.0              FedProx vs. FedAvg (baseline) 17/36             -0.201608                         -0.086093
+           1.0 SCAFFOLD (c_lr=0.25) vs. FedAvg (baseline) 13/36             -1.483864                          2.756361

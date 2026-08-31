@@ -11,7 +11,7 @@ import uuid
 from collections import defaultdict
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any
+from typing import Any, Generator
 
 import pandas as pd
 import simpy
@@ -37,11 +37,37 @@ BORROWER_EGT_POLICIES = {
     "egt_fermi",
     "egt_best_response",
     "egt_polynomial",
+    "fl_egt",
+    "local_egt",
 }
 VALID_WHOLESALER_POLICIES = {
     "rl",
+    "fl_rl",
+    "fl_rl_prox",
+    "fl_rl_scaffold",
+    "fl_rl_visitweighted",
     *BORROWER_EGT_POLICIES,
     "none",
+}
+
+# Wholesaler policies that select borrower risk premiums via the
+# borrower_premium_q Q-table (as opposed to the borrower.score-based
+# formula used by the EGT-family policies).
+Q_LEARNING_WHOLESALER_POLICIES = {
+    "rl",
+    "fl_rl",
+    "fl_rl_prox",
+    "fl_rl_scaffold",
+    "fl_rl_visitweighted",
+}
+
+# Federated (multi-financier) Q-learning policies specifically. These are
+# the policies that participate in periodic Q-table aggregation.
+FEDERATED_RL_WHOLESALER_POLICIES = {
+    "fl_rl",
+    "fl_rl_prox",
+    "fl_rl_scaffold",
+    "fl_rl_visitweighted",
 }
 
 
@@ -268,6 +294,43 @@ class Financier:
     borrower_max_risk_premium: float = 16.0
     borrower_premium_default_loss_weight: float = 1.0
 
+    # --- Non-IID segmentation knob ---
+    # When set, this financier only serves borrowers whose name is in this
+    # set; borrowers outside it are screened out (see screen_borrower).
+    # Used to give fl_rl-family financiers genuinely different local data
+    # distributions so FedProx / SCAFFOLD have real client drift to correct.
+    eligible_borrowers: frozenset[str] | None = None
+
+    # --- FedProx (fl_rl_prox) state ---
+    # mu controls how strongly local Q-updates are pulled back toward the
+    # last aggregated global Q-table between federation rounds.
+    fedprox_mu: float = 0.1
+    borrower_premium_q_global_snapshot: dict[tuple[int, ...], dict[float, float]] = field(
+        default_factory=dict
+    )
+
+    # --- SCAFFOLD (fl_rl_scaffold) state ---
+    # Tabular adaptation of SCAFFOLD's control variates. c_local tracks this
+    # financier's own drift; c_global is the group-average control variate,
+    # broadcast by the aggregator alongside the averaged Q-table. This is an
+    # adapted analogue for tabular TD updates, not a literal reproduction of
+    # the SGD-based algorithm in Karimireddy et al. (2020).
+    scaffold_c_lr: float = 0.5
+    borrower_premium_c_local: dict[tuple[int, ...], dict[float, float]] = field(default_factory=dict)
+    borrower_premium_c_global: dict[tuple[int, ...], dict[float, float]] = field(default_factory=dict)
+
+    # --- Visit-weighted aggregation (fl_rl_visitweighted) state ---
+    # Counts how many times this financier has personally updated each
+    # (state, action) cell. Used only at aggregation time, as a per-cell
+    # confidence weight: a financier with more local experience in a given
+    # borrower-risk state carries more influence over the shared estimate
+    # for that state. This is a tabular-specific signal with no direct
+    # analogue in gradient-based FedAvg/FedProx/SCAFFOLD. The local TD
+    # update itself is unchanged (identical to plain FedAvg's local step);
+    # only the aggregation step (see aggregate_federated_rl_visitweighted)
+    # differs.
+    borrower_premium_visits: dict[tuple[int, ...], dict[float, int]] = field(default_factory=dict)
+
     apr_alpha: float = 0.25
     apr_gamma: float = 0.95
     apr_epsilon: float = 0.08
@@ -404,6 +467,14 @@ class Financier:
                 state_key(state): {f"{action:g}": value for action, value in actions.items()}
                 for state, actions in self.borrower_premium_q.items()
             },
+            "borrower_egt_state": {
+                borrower_name: {
+                    "score": state["score"],
+                    "pi_bar": state["pi_bar"],
+                    "n": state["n"]
+                }
+                for borrower_name, state in self.borrower_egt_state.items()
+            }
         }
 
     def import_q_tables(self, data: dict[str, Any]) -> None:
@@ -419,6 +490,14 @@ class Financier:
             parse_state_key(state): {float(action): float(value) for action, value in actions.items()}
             for state, actions in borrower_premium_q.items()
         }
+
+        borrower_egt_state = data.get("borrower_egt_state", {})
+        for borrower_name, state in borrower_egt_state.items():
+            self.borrower_egt_state[borrower_name] = {
+                "score": float(state["score"]),
+                "pi_bar": float(state["pi_bar"]),
+                "n": float(state["n"])
+            }
 
 
     def record_borrower_request(self, borrower: "Borrower", approved: bool) -> None:
@@ -445,20 +524,43 @@ class Financier:
     def estimate_borrower_score(self, borrower: "Borrower") -> tuple[float, str]:
         if self.wholesaler_policy == "none":
             return 0.5, "No borrower screening"
-        if self.wholesaler_policy == "rl":
-            return self.borrower_strategy_score(borrower), "RL borrower score"
+        if self.wholesaler_policy in Q_LEARNING_WHOLESALER_POLICIES:
+            return self.borrower_strategy_score(borrower), f"{self.wholesaler_policy.upper()} borrower score"
+        if self.wholesaler_policy in ("fl_egt", "local_egt"):
+            local_score = self.borrower_egt_state[borrower.name]["score"]
+            return local_score, f"Local {self.wholesaler_policy} borrower score"
         if self.wholesaler_policy in BORROWER_EGT_POLICIES:
             return self.borrower_strategy_score(borrower), f"{self.wholesaler_policy} borrower score"
         return 0.5, "Neutral borrower score"
 
     def screen_borrower(self, borrower: "Borrower", requested_amount: float) -> dict[str, Any]:
+        if self.eligible_borrowers is not None and borrower.name not in self.eligible_borrowers:
+            # Non-IID segmentation knob: this financier does not serve this
+            # borrower's segment, so it is excluded from the auction for
+            # this borrower (same effect as a screening rejection).
+            return {
+                "score": 0.5,
+                "risk_premium": 0.0,
+                "reject": True,
+                "reason": "OUT_OF_SEGMENT",
+                "borrower_rl_state": None,
+                "borrower_rl_action": None,
+                "borrower_risk_premium_step": None,
+            }
+
         score, reason = self.estimate_borrower_score(borrower)
         borrower_rl_state = None
         borrower_rl_action = None
         borrower_risk_premium_step = None
         if self.wholesaler_policy == "none":
             risk_premium = 0.0
-        elif self.wholesaler_policy == "rl":
+        elif self.wholesaler_policy in Q_LEARNING_WHOLESALER_POLICIES:
+            # NOTE: previously this branch only matched wholesaler_policy ==
+            # "rl", so "fl_rl" (and the fl_rl_prox / fl_rl_scaffold variants
+            # added alongside it) silently fell through to the score-based
+            # formula below and never touched borrower_premium_q. That made
+            # the federated Q-table aggregation a no-op (it was averaging an
+            # empty table). Fixed so all Q-learning policies actually learn.
             risk_premium, borrower_risk_premium_step, borrower_rl_state = (
                 self.choose_borrower_risk_premium(borrower)
             )
@@ -717,7 +819,16 @@ class Financier:
         else:
             stats["ewma_profit_ratio"] = 0.8 * stats["ewma_profit_ratio"] + 0.2 * loan_profit_pct
 
-        if self.wholesaler_policy == "rl" and loan.borrower_rl_state is not None and loan.borrower_rl_action is not None:
+        if self.wholesaler_policy in ("fl_egt", "local_egt"):
+            state = self.borrower_egt_state[loan.borrower.name]
+            borrower_loan_payoff = summary["borrower_profit_pct"]
+            state["pi_bar"] = (1.0 - borrower_egt_alpha) * state["pi_bar"] + borrower_egt_alpha * borrower_loan_payoff
+            payoff_gap = borrower_loan_payoff - state["pi_bar"]
+            z = logit(state["score"]) + borrower_egt_eta * 4.0 * payoff_gap
+            state["score"] = clamp(1.0 / (1.0 + math.exp(-z)), 0.0, 1.0)
+            state["n"] += 1.0
+
+        if self.wholesaler_policy in Q_LEARNING_WHOLESALER_POLICIES and loan.borrower_rl_state is not None and loan.borrower_rl_action is not None:
             premium_actions = self.borrower_premium_q.setdefault(
                 loan.borrower_rl_state,
                 self.borrower_premium_rl_actions(),
@@ -730,14 +841,37 @@ class Financier:
                 ).values()
             )
             old_q = premium_actions[loan.borrower_rl_action]
+            visit_counts = self.borrower_premium_visits.setdefault(loan.borrower_rl_state, {})
+            visit_counts[loan.borrower_rl_action] = visit_counts.get(loan.borrower_rl_action, 0) + 1
             premium_reward = summary["fin_profit_pct"]
             if summary["is_default"]:
                 default_ratio = max(0.0, summary["principal"] - summary["principal_paid"]) / max(1.0, summary["principal"])
                 premium_reward -= (0.05 * default_ratio)
             premium_reward = clamp(premium_reward, -1.0, 1.0)
-            premium_actions[loan.borrower_rl_action] = old_q + self.borrower_alpha * (
-                premium_reward + self.borrower_gamma * next_best - old_q
-            )
+            td_error = premium_reward + self.borrower_gamma * next_best - old_q
+
+            if self.wholesaler_policy == "fl_rl_prox":
+                # FedProx: pull the local update back toward the last
+                # aggregated global Q-value for this (state, action) cell.
+                global_actions = self.borrower_premium_q_global_snapshot.get(loan.borrower_rl_state, {})
+                global_q = global_actions.get(loan.borrower_rl_action, old_q)
+                proximal_term = self.fedprox_mu * (old_q - global_q)
+                new_q = old_q + self.borrower_alpha * td_error - self.borrower_alpha * proximal_term
+            elif self.wholesaler_policy == "fl_rl_scaffold":
+                # SCAFFOLD (tabular analogue): correct the local TD update
+                # using the gap between the group control variate and this
+                # financier's own control variate for the cell.
+                c_global = self.borrower_premium_c_global.get(loan.borrower_rl_state, {}).get(
+                    loan.borrower_rl_action, 0.0
+                )
+                c_local = self.borrower_premium_c_local.get(loan.borrower_rl_state, {}).get(
+                    loan.borrower_rl_action, 0.0
+                )
+                new_q = old_q + self.borrower_alpha * (td_error + (c_global - c_local))
+            else:
+                new_q = old_q + self.borrower_alpha * td_error
+
+            premium_actions[loan.borrower_rl_action] = new_q
 
 
 @dataclass
@@ -852,7 +986,7 @@ class Borrower:
     ) -> float:
         self.pi_bar = (1.0 - alpha) * self.pi_bar + alpha * payoff
         payoff_gap = payoff - self.pi_bar
-        if model in {"egt", "egt_single"}:
+        if model in {"egt", "egt_single", "fl_egt", "local_egt"}:
             z = logit(self.score) + eta * payoff_gap
             self.score = clamp(1.0 / (1.0 + math.exp(-z)), 0.0, 1.0)
         elif model == "egt_replicator":
@@ -1626,6 +1760,320 @@ def load_q_tables(financiers: list[Financier], q_table_path: Path | None) -> Non
             financier.import_q_tables(payload[financier.name])
 
 
+def aggregate_federated_egt(financiers: list[Financier]) -> None:
+    fl_egt_financiers = [f for f in financiers if f.wholesaler_policy == "fl_egt"]
+    if not fl_egt_financiers:
+        return
+    
+    sum_score = {}
+    sum_pi_bar = {}
+    count = {}
+    
+    for f in fl_egt_financiers:
+        for borrower_name, egt_state in f.borrower_egt_state.items():
+            if borrower_name not in sum_score:
+                sum_score[borrower_name] = 0.0
+                sum_pi_bar[borrower_name] = 0.0
+                count[borrower_name] = 0
+            sum_score[borrower_name] += egt_state["score"]
+            sum_pi_bar[borrower_name] += egt_state["pi_bar"]
+            count[borrower_name] += 1
+            
+    for borrower_name, cnt in count.items():
+        if cnt > 0:
+            avg_score = sum_score[borrower_name] / cnt
+            avg_pi_bar = sum_pi_bar[borrower_name] / cnt
+            for f in fl_egt_financiers:
+                state = f.borrower_egt_state[borrower_name]
+                state["score"] = avg_score
+                state["pi_bar"] = avg_pi_bar
+
+
+def aggregate_federated_rl(financiers: list[Financier]) -> None:
+    fl_rl_financiers = [f for f in financiers if f.wholesaler_policy == "fl_rl"]
+    if not fl_rl_financiers:
+        return
+    
+    sum_q = {}
+    count_q = {}
+    
+    for f in fl_rl_financiers:
+        for state, actions in f.borrower_premium_q.items():
+            if state not in sum_q:
+                sum_q[state] = {}
+                count_q[state] = {}
+            for action, q_value in actions.items():
+                if action not in sum_q[state]:
+                    sum_q[state][action] = 0.0
+                    count_q[state][action] = 0
+                sum_q[state][action] += q_value
+                count_q[state][action] += 1
+                
+    for state in sum_q:
+        for action in sum_q[state]:
+            avg_val = sum_q[state][action] / count_q[state][action]
+            for f in fl_rl_financiers:
+                if state not in f.borrower_premium_q:
+                    f.borrower_premium_q[state] = {}
+                f.borrower_premium_q[state][action] = avg_val
+
+
+def aggregate_federated_rl_prox(financiers: list[Financier]) -> None:
+    """FedProx aggregation for wholesaler_policy == 'fl_rl_prox'.
+
+    Aggregation step itself is the same uniform FedAvg-style averaging as
+    aggregate_federated_rl; FedProx's difference is entirely in the local
+    update (see the proximal term applied in update_borrower_learning).
+    What this function adds on top of plain FedAvg is refreshing each
+    financier's borrower_premium_q_global_snapshot to the freshly averaged
+    table, so the proximal term next round pulls toward the latest global
+    model rather than a stale one.
+    """
+    group = [f for f in financiers if f.wholesaler_policy == "fl_rl_prox"]
+    if not group:
+        return
+
+    sum_q: dict[tuple[int, ...], dict[float, float]] = {}
+    count_q: dict[tuple[int, ...], dict[float, int]] = {}
+
+    for f in group:
+        for state, actions in f.borrower_premium_q.items():
+            sum_q.setdefault(state, {})
+            count_q.setdefault(state, {})
+            for action, q_value in actions.items():
+                sum_q[state].setdefault(action, 0.0)
+                count_q[state].setdefault(action, 0)
+                sum_q[state][action] += q_value
+                count_q[state][action] += 1
+
+    global_q: dict[tuple[int, ...], dict[float, float]] = {}
+    for state in sum_q:
+        global_q[state] = {}
+        for action in sum_q[state]:
+            global_q[state][action] = sum_q[state][action] / count_q[state][action]
+
+    for f in group:
+        for state, actions in global_q.items():
+            f.borrower_premium_q.setdefault(state, {})
+            for action, avg_val in actions.items():
+                f.borrower_premium_q[state][action] = avg_val
+        # Deep-ish copy is unnecessary here since values are floats.
+        f.borrower_premium_q_global_snapshot = {
+            state: dict(actions) for state, actions in global_q.items()
+        }
+
+
+def aggregate_federated_rl_scaffold(financiers: list[Financier]) -> None:
+    """SCAFFOLD aggregation for wholesaler_policy == 'fl_rl_scaffold'.
+
+    Adapted tabular analogue of SCAFFOLD (Karimireddy et al., 2020) for
+    federated Q-learning. The original algorithm corrects client-drift in
+    gradient-based (SGD) local steps using control variates; here the same
+    idea is applied to TD updates on Q-table cells:
+
+      1. Before averaging, record each financier's pre-aggregation local Q
+         value per (state, action) cell.
+      2. Average Q across the group (the FedAvg "download" step).
+      3. Update each financier's local control variate c_local by the drift
+         between its pre-aggregation Q and the new global average, scaled by
+         scaffold_c_lr.
+      4. Average the updated c_local values into a group c_global and
+         broadcast it to every financier in the group, alongside the
+         averaged Q-table.
+
+    This is a research-comparison adaptation, not a literal reproduction of
+    the SGD-based proof in the original paper.
+    """
+    group = [f for f in financiers if f.wholesaler_policy == "fl_rl_scaffold"]
+    if not group:
+        return
+
+    # Step 1: snapshot pre-aggregation local Q values.
+    pre_agg_q = [
+        {state: dict(actions) for state, actions in f.borrower_premium_q.items()}
+        for f in group
+    ]
+
+    # Step 2: FedAvg-style averaging of Q across the group.
+    sum_q: dict[tuple[int, ...], dict[float, float]] = {}
+    count_q: dict[tuple[int, ...], dict[float, int]] = {}
+    for f in group:
+        for state, actions in f.borrower_premium_q.items():
+            sum_q.setdefault(state, {})
+            count_q.setdefault(state, {})
+            for action, q_value in actions.items():
+                sum_q[state].setdefault(action, 0.0)
+                count_q[state].setdefault(action, 0)
+                sum_q[state][action] += q_value
+                count_q[state][action] += 1
+
+    global_q: dict[tuple[int, ...], dict[float, float]] = {}
+    for state in sum_q:
+        global_q[state] = {}
+        for action in sum_q[state]:
+            global_q[state][action] = sum_q[state][action] / count_q[state][action]
+
+    # Step 3: update each financier's local control variate from its
+    # pre-aggregation drift relative to the new global average.
+    for f, local_q in zip(group, pre_agg_q):
+        for state, actions in local_q.items():
+            f.borrower_premium_c_local.setdefault(state, {})
+            global_actions = global_q.get(state, {})
+            for action, local_val in actions.items():
+                global_val = global_actions.get(action, local_val)
+                drift = local_val - global_val
+                prev_c = f.borrower_premium_c_local[state].get(action, 0.0)
+                f.borrower_premium_c_local[state][action] = prev_c + f.scaffold_c_lr * drift
+
+    # Step 4: average local control variates into a group control variate
+    # and broadcast both the averaged Q-table and the group control variate.
+    sum_c: dict[tuple[int, ...], dict[float, float]] = {}
+    count_c: dict[tuple[int, ...], dict[float, int]] = {}
+    for f in group:
+        for state, actions in f.borrower_premium_c_local.items():
+            sum_c.setdefault(state, {})
+            count_c.setdefault(state, {})
+            for action, c_val in actions.items():
+                sum_c[state].setdefault(action, 0.0)
+                count_c[state].setdefault(action, 0)
+                sum_c[state][action] += c_val
+                count_c[state][action] += 1
+
+    global_c: dict[tuple[int, ...], dict[float, float]] = {}
+    for state in sum_c:
+        global_c[state] = {}
+        for action in sum_c[state]:
+            global_c[state][action] = sum_c[state][action] / count_c[state][action]
+
+    for f in group:
+        for state, actions in global_q.items():
+            f.borrower_premium_q.setdefault(state, {})
+            for action, avg_val in actions.items():
+                f.borrower_premium_q[state][action] = avg_val
+        f.borrower_premium_c_global = {
+            state: dict(actions) for state, actions in global_c.items()
+        }
+
+
+def aggregate_federated_rl_visitweighted(financiers: list[Financier]) -> None:
+    """Visit-count-weighted aggregation for wholesaler_policy ==
+    'fl_rl_visitweighted'.
+
+    Unlike FedAvg's uniform averaging (every financier's Q-value counts
+    equally), each financier's contribution to a given (state, action) cell
+    is weighted by how many times that financier has personally visited
+    (i.e. updated) that cell since the simulation began. A financier with
+    more local experience in a given borrower-risk state therefore carries
+    proportionally more influence over the shared estimate for that state,
+    while a financier that has barely seen that state contributes little.
+
+    This is a tabular-specific idea: per-cell visit counts are a natural
+    confidence signal available in tabular Q-learning that has no direct
+    analogue in gradient-based FedAvg/FedProx/SCAFFOLD, none of which weight
+    contributions by anything resembling per-parameter sample counts. The
+    local TD update itself is unchanged from plain FedAvg; only this
+    aggregation step differs.
+    """
+    group = [f for f in financiers if f.wholesaler_policy == "fl_rl_visitweighted"]
+    if not group:
+        return
+
+    weighted_sum: dict[tuple[int, ...], dict[float, float]] = {}
+    weight_total: dict[tuple[int, ...], dict[float, float]] = {}
+
+    for f in group:
+        for state, actions in f.borrower_premium_q.items():
+            visits_for_state = f.borrower_premium_visits.get(state, {})
+            weighted_sum.setdefault(state, {})
+            weight_total.setdefault(state, {})
+            for action, q_value in actions.items():
+                # A cell present in borrower_premium_q but never visited
+                # (e.g. created only via the next-state max() lookahead)
+                # still gets a minimum weight of 1 so it is not dropped
+                # entirely from the average.
+                weight = max(1, visits_for_state.get(action, 0))
+                weighted_sum[state].setdefault(action, 0.0)
+                weight_total[state].setdefault(action, 0.0)
+                weighted_sum[state][action] += weight * q_value
+                weight_total[state][action] += weight
+
+    for state in weighted_sum:
+        for action in weighted_sum[state]:
+            total_weight = weight_total[state][action]
+            if total_weight <= 0:
+                continue
+            avg_val = weighted_sum[state][action] / total_weight
+            for f in group:
+                f.borrower_premium_q.setdefault(state, {})
+                f.borrower_premium_q[state][action] = avg_val
+
+
+def assign_non_iid_borrower_segments(
+    financiers: list[Financier],
+    borrowers: list["Borrower"],
+    group_policies: tuple[str, ...] = ("fl_rl", "fl_rl_prox", "fl_rl_scaffold", "fl_rl_visitweighted"),
+    primary_share: float = 0.8,
+    seed: int | None = None,
+) -> None:
+    """Give each federated financier a skewed (non-IID) borrower segment.
+
+    Without this, every financier in a federated policy group quotes to the
+    same shared borrower pool, so there is little genuine "client drift" for
+    FedProx / SCAFFOLD to correct. This partitions borrowers by
+    shock_profile (risk tier) and assigns each financier in the group a
+    primary tier (primary_share of that tier's borrowers) plus a minority
+    share of the other tiers, so different financiers see different
+    borrower-risk mixes -- a label-skew non-IID setup.
+
+    primary_share=1.0 reproduces the fully-shared/IID market (equivalent to
+    not calling this function at all, since eligible_borrowers stays None
+    unless assigned here). Call with a lower primary_share for stronger
+    heterogeneity.
+    """
+    rng = random.Random(seed)
+    by_profile: dict[str, list[str]] = defaultdict(list)
+    for b in borrowers:
+        by_profile[b.shock_profile].append(b.name)
+    profiles = sorted(by_profile.keys())
+    if not profiles:
+        return
+
+    # Partition per policy (not across the combined pool of all policies) so
+    # that financier index i has the same *primary* risk tier in every
+    # policy group -- e.g. the 1st fl_rl financier, 1st fl_rl_prox financier,
+    # and 1st fl_rl_scaffold financier all primarily see the same tier. That
+    # keeps FedAvg vs FedProx vs SCAFFOLD comparisons matched: the only
+    # difference between groups is the aggregation algorithm, not which
+    # borrowers happen to be assigned to which group.
+    for policy in group_policies:
+        policy_financiers = [f for f in financiers if f.wholesaler_policy == policy]
+        for i, f in enumerate(policy_financiers):
+            primary_profile = profiles[i % len(profiles)]
+            eligible: set[str] = set(by_profile[primary_profile])
+            for profile in profiles:
+                if profile == primary_profile:
+                    continue
+                pool = by_profile[profile]
+                minority_count = max(1, round(len(pool) * (1.0 - primary_share)))
+                minority_count = min(minority_count, len(pool))
+                eligible.update(rng.sample(pool, minority_count))
+            f.eligible_borrowers = frozenset(eligible)
+
+
+def federated_aggregation_process(
+    env: simpy.Environment,
+    financiers: list[Financier],
+    interval: int,
+) -> Generator[None, None, None]:
+    while True:
+        yield env.timeout(interval)
+        aggregate_federated_egt(financiers)
+        aggregate_federated_rl(financiers)
+        aggregate_federated_rl_prox(financiers)
+        aggregate_federated_rl_scaffold(financiers)
+        aggregate_federated_rl_visitweighted(financiers)
+
+
 def run_simulation(
     days: int,
     seed: int,
@@ -1668,6 +2116,8 @@ def run_simulation(
     borrower_lot_amount_schedule: list[tuple[int, tuple[float, float]]] | None = None,
     borrower_tenor_range: tuple[int, int] = (200, 300),
     extra_borrower_process_interval: int | None = None,
+    non_iid_primary_share: float | None = None,
+    non_iid_group_policies: tuple[str, ...] = ("fl_rl", "fl_rl_prox", "fl_rl_scaffold", "fl_rl_visitweighted"),
 ) -> dict[str, pd.DataFrame]:
     random.seed(seed)
     env = simpy.Environment()
@@ -1719,6 +2169,15 @@ def run_simulation(
         for i, shock_profile in enumerate(shock_profiles, start=1)
     ]
 
+    if non_iid_primary_share is not None:
+        assign_non_iid_borrower_segments(
+            financiers,
+            borrowers,
+            group_policies=non_iid_group_policies,
+            primary_share=non_iid_primary_share,
+            seed=seed,
+        )
+
     results: list[dict[str, Any]] = []
     loans_log: list[dict[str, Any]] = []
 
@@ -1762,6 +2221,8 @@ def run_simulation(
                     )
                 )
                 extra_start_day += extra_borrower_process_interval
+
+    env.process(federated_aggregation_process(env, financiers, 30))
 
     if drain_outstanding:
         env.run(until=days)

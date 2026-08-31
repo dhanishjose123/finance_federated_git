@@ -1,0 +1,33 @@
+Stage C: Fixed-Capital Wholesaler Scalability (2000 Days)
+=========================================================
+Days: 2000
+Seeds: [709098, 436570, 831197]
+Capital scaling mode: fixed
+Base wholesaler count: 50
+Base capital levels per financier: [1000000.0, 5000000.0, 10000000.0]
+Default scenarios: ['none_default', 'low_default', 'medium_default', 'high_default']
+Wholesaler counts: [50, 100, 250, 500, 1000]
+Policies: ['Isolated RL (non-federated)', 'FedAvg (federated)']
+Run limit for this invocation: none
+Summarise only: True
+Borrower tenor range: (200, 300)
+Drain outstanding loans: True
+Run count: 349
+Elapsed: 0.0s
+
+--- Scalability summary by wholesaler count and policy ---
+ wholesaler_count wholesaler_policy                       label  runs  mean_return_pct  mean_avg_capital_utilization  mean_max_capital_utilization  mean_final_utilization  max_final_utilization  total_loans  mean_loans_per_wholesaler  default_count_rate  default_amount_to_initial_capital_rate
+               50             fl_rl          FedAvg (federated)    36        39.306052                      0.602093                      0.911819                     0.0                    0.0       159828                  88.793333            0.048934                                0.035033
+               50                rl Isolated RL (non-federated)    36        37.643020                      0.612464                      0.922884                     0.0                    0.0       163541                  90.856111            0.060431                                0.042828
+              100             fl_rl          FedAvg (federated)    36        73.973621                      0.769708                      0.998811                     0.0                    0.0       275972                  76.658889            0.041367                                0.051134
+              100                rl Isolated RL (non-federated)    36        72.727436                      0.778169                      0.999468                     0.0                    0.0       280812                  78.003333            0.052370                                0.064544
+              250             fl_rl          FedAvg (federated)    36       139.829039                      0.926693                      0.999999                     0.0                    0.0       452535                  50.281667            0.030813                                0.063994
+              250                rl Isolated RL (non-federated)    36       139.129687                      0.930817                      0.999999                     0.0                    0.0       455312                  50.590222            0.036878                                0.076690
+              500             fl_rl          FedAvg (federated)    36       169.318584                      0.973551                      0.999999                     0.0                    0.0       526941                  29.274500            0.028620                                0.068202
+              500                rl Isolated RL (non-federated)    36       171.814991                      0.973538                      1.000000                     0.0                    0.0       531506                  29.528111            0.033655                                0.080599
+             1000             fl_rl          FedAvg (federated)    30       179.886555                      0.987253                      1.000000                     0.0                    0.0       414785                  13.826167            0.032803                                0.082808
+             1000                rl Isolated RL (non-federated)    31       178.290756                      0.985865                      1.000000                     0.0                    0.0       427108                  13.777677            0.037105                                0.092458
+
+Capital-utilisation interpretation:
+Higher average or maximum utilisation means available financier capital is more tightly used.
+Values near 1.0 indicate that finance demand is close to the available capital limit.

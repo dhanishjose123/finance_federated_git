@@ -5,6 +5,7 @@ from __future__ import annotations
 
 from pathlib import Path
 import time
+import random
 
 import pandas as pd
 
@@ -90,7 +91,10 @@ BORROWER_PREMIUM_ACTIONS = (-2.0, 0.0, 4.0, 8.0, 12.0, 16.0)
 
 BASE_FINANCIERS = [
     ("Fin_RL_Borrower_RL", "pure_rl", "rl"),
+    ("Fin_RL_Borrower_FL_RL", "pure_rl", "fl_rl"),
     ("Fin_RL_Borrower_EGT", "pure_rl", "egt"),
+    ("Fin_RL_Borrower_FL_EGT", "pure_rl", "fl_egt"),
+    ("Fin_RL_Borrower_Local_EGT", "pure_rl", "local_egt"),
     ("Fin_RL_Borrower_none", "pure_rl", "none"),
     ("Fin_6pct", "fixed_6", "none"),
     ("Fin_8pct", "fixed_8", "none"),
@@ -101,7 +105,10 @@ APR_STRATEGIES = [apr_strategy for _, apr_strategy, _ in BASE_FINANCIERS]
 WHOLESALER_POLICIES = [wholesaler_policy for _, _, wholesaler_policy in BASE_FINANCIERS]
 PURE_RL_FINANCIERS = {
     "Fin_RL_Borrower_RL",
+    "Fin_RL_Borrower_FL_RL",
     "Fin_RL_Borrower_EGT",
+    "Fin_RL_Borrower_FL_EGT",
+    "Fin_RL_Borrower_Local_EGT",
     "Fin_RL_Borrower_none",
 }
 BASE_APRS = [6.0] * len(PURE_RL_FINANCIERS) + [6.0, 8.0, 10.0]
@@ -281,7 +288,8 @@ def main() -> None:
         0.05 if name == "Fin_6pct" else 0.08
         for name in FINANCIER_NAMES
     ]
-    SEEDS_TO_RUN = [42, 123, 456]
+    NUM_SEEDS = 3  # Change this number to control the number of random seeds
+    SEEDS_TO_RUN = [random.randint(1, 1000000) for _ in range(NUM_SEEDS)]
     total_runs = len(CAPITALS_TO_RUN) * len(DEFAULT_SCENARIOS_TO_RUN) * len(SEEDS_TO_RUN)
     completed_runs = 0
     start_time = time.perf_counter()

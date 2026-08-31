@@ -1,0 +1,51 @@
+Stage D: Proportional-Capital Wholesaler Scalability
+====================================================
+
+Verified result set
+-------------------
+Days: 4000
+Seeds: 709098, 436570, 831197
+Capital scaling mode: proportional
+Base capital levels per financier: 1M, 5M, 10M
+Default scenarios: none, low, medium, high
+Policies: isolated RL and FedAvg federated RL
+
+Completeness
+------------
+50 wholesalers: 72/72 runs complete
+100 wholesalers: 72/72 runs complete
+250 wholesalers: 72/72 runs complete
+500 wholesalers: 10/72 runs complete
+
+The complete verified range is therefore 50, 100, and 250 wholesalers.
+The 500-wholesaler rows are partial stress-case observations and should not
+be used for the main manuscript claim unless clearly labelled as incomplete.
+
+Complete proportional-capital results
+-------------------------------------
+Wholesalers  Policy       Runs  Return    Default rate  Avg utilisation
+50           Isolated RL  36    93.15%    3.44%         54.55%
+50           FedAvg       36    92.92%    2.77%         53.41%
+100          Isolated RL  36    96.82%    3.18%         53.87%
+100          FedAvg       36    98.29%    2.53%         52.85%
+250          Isolated RL  36    104.46%   2.46%         51.64%
+250          FedAvg       36    104.07%   2.14%         50.76%
+
+Overall complete range
+----------------------
+FedAvg return: 101.23%
+Isolated RL return: 101.14%
+FedAvg loan-count default rate: 2.32%
+Isolated RL loan-count default rate: 2.77%
+FedAvg default amount to initial capital: 3.58%
+Isolated RL default amount to initial capital: 4.24%
+
+Interpretation
+--------------
+The proportional-capital experiment shows that FedAvg consistently reduces
+loan-count defaults when capital grows with borrower volume. The return
+difference is small. FedAvg has a higher return at 100 wholesalers, while
+isolated RL has a slightly higher return at 50 and 250 wholesalers. The
+evidence therefore supports a careful claim: federated borrower screening
+improves default control in the complete proportional-capital scalability
+range, but it does not uniformly dominate isolated RL on return.

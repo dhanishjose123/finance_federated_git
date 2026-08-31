@@ -1,0 +1,14 @@
+Stage B3 -- STRESSED-ONLY (low/medium/high default only, none_default excluded)
+========================================================================================
+Recomputed from stage_b3_raw_summary.csv, filtering out none_default before pooling.
+
+--- Matched comparison vs. FedAvg (baseline), stressed scenarios only ---
+                        matched_comparison  wins  other_mean_return_pct  baseline_mean_return_pct  delta_return_pp  delta_default_count_rate_pp  mean_net_profit_diff
+             FedProx vs. FedAvg (baseline) 13/27             153.254601                155.457895        -2.203294                    -0.256068         -21474.369658
+SCAFFOLD (c_lr=0.25) vs. FedAvg (baseline) 17/27             155.199908                155.457895        -0.257986                    -0.376362           3560.383097
+
+--- Overall (pooled across seeds, capital levels, stressed scenarios only) ---
+wholesaler_policy  financiers  runs  total_initial_capital  total_final_capital  mean_final_capital  mean_return_pct  total_defaults  total_loans  default_count_rate  default_amount_to_initial_capital_rate                label
+   fl_rl_scaffold           3    81            432000000.0         7.459929e+08        9.209789e+06        72.683536            7904       183327            0.055423                                0.081616 SCAFFOLD (c_lr=0.25)
+            fl_rl           3    81            432000000.0         7.457045e+08        9.206228e+06        72.616778            7836       185740            0.059187                                0.081948    FedAvg (baseline)
+       fl_rl_prox           3    81            432000000.0         7.439651e+08        9.184754e+06        72.214134            7610       183490            0.056626                                0.078663              FedProx
