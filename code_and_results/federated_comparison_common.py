@@ -323,7 +323,7 @@ def run_experiment(
     output_prefix: str,
     separate_policy_runs: bool = False,
 ) -> None:
-    output_dir.mkdir(exist_ok=True)
+    output_dir.mkdir(parents=True, exist_ok=True)
     start = time.time()
     all_summaries = []
     policy_run_multiplier = len(policy_groups) if separate_policy_runs else 1
@@ -398,18 +398,33 @@ def run_experiment(
 
     (output_dir / f"{output_prefix}_report.txt").write_text(report_text, encoding="utf-8")
     combined.to_csv(output_dir / f"{output_prefix}_raw_summary.csv", index=False)
-    write_excel(
-        {
-            "Matched_Comparison": comparison_table,
-            "Overall_Summary": overall_summary,
-            "By_Scenario": by_scenario_summary,
-            "By_Capital": by_capital_summary,
-            "By_Capital_Scenario": by_capital_scenario_summary,
-            "Paired_Deltas": paired_delta_table,
-            "Raw_Summary": combined,
-        },
-        output_dir / f"{output_prefix}_results.xlsx",
-    )
-
     print(f"\nSaved: {output_dir / f'{output_prefix}_report.txt'}")
-    print(f"Saved: {output_dir / f'{output_prefix}_results.xlsx'}")
+    print(f"Saved: {output_dir / f'{output_prefix}_raw_summary.csv'}")
+
+    # The .xlsx export is a convenience extra, not required by anything
+    # downstream (combine_and_retest_significance.py only reads the .csv
+    # above). Don't let a missing/broken xlsxwriter install abort an
+    # otherwise-successful run -- this matters especially for the
+    # *_extra_seeds.py scripts, which call run_experiment once per seed in a
+    # long unattended loop; a hard crash here would otherwise kill the whole
+    # multi-hour run on the very first seed.
+    try:
+        write_excel(
+            {
+                "Matched_Comparison": comparison_table,
+                "Overall_Summary": overall_summary,
+                "By_Scenario": by_scenario_summary,
+                "By_Capital": by_capital_summary,
+                "By_Capital_Scenario": by_capital_scenario_summary,
+                "Paired_Deltas": paired_delta_table,
+                "Raw_Summary": combined,
+            },
+            output_dir / f"{output_prefix}_results.xlsx",
+        )
+        print(f"Saved: {output_dir / f'{output_prefix}_results.xlsx'}")
+    except ImportError as exc:
+        print(
+            f"WARNING: skipped .xlsx export ({exc}). The .csv and .txt above were "
+            f"saved successfully and are all that's needed downstream -- install "
+            f"xlsxwriter (pip install xlsxwriter) if you want the .xlsx too."
+        )

@@ -1,0 +1,34 @@
+==============================================================================
+STAGE A (POOLED): FedAvg (federated) vs. Isolated RL
+==============================================================================
+                matched_comparison    wins  other_mean_return_pct  baseline_mean_return_pct  delta_return_pp  delta_default_count_rate_pp  mean_net_profit_diff
+FedAvg (federated) vs. Isolated RL 105/204             163.707577                163.674418         0.033159                    -0.493774          48853.382881
+
+--- Pooled, all matched seed-capital-scenario pairs (n=204) ---
+  Return %:  mean delta = +0.033 pp, sd = 19.998 pp | paired t = 0.024, p = 0.9811 | Wilcoxon W = 9759.0, p = 0.4097
+  Default rate (pp): mean delta = -0.494 pp, sd = 2.332 pp | paired t = -3.024, p = 0.0028 | Wilcoxon W = 3579.0, p = 0.0000
+--- Stressed-only (low/medium/high default) (n=153) ---
+  Return %:  mean delta = +1.421 pp, sd = 18.571 pp | paired t = 0.947, p = 0.3453 | Wilcoxon W = 5314.0, p = 0.2937
+  Default rate (pp): mean delta = -0.658 pp, sd = 2.675 pp | paired t = -3.045, p = 0.0027 | Wilcoxon W = 3579.0, p = 0.0000
+
+==============================================================================
+STAGE B3 (POOLED): FedProx / SCAFFOLD (c_lr=0.25) vs. FedAvg
+==============================================================================
+                        matched_comparison   wins  other_mean_return_pct  baseline_mean_return_pct  delta_return_pp  delta_default_count_rate_pp  mean_net_profit_diff
+             FedProx vs. FedAvg (baseline) 91/204             163.468018                163.707577        -0.239558                     0.028652           7018.656582
+SCAFFOLD (c_lr=0.25) vs. FedAvg (baseline) 94/204             161.522809                163.707577        -2.184767                    -0.099118         -35190.244057
+
+### FedProx vs. FedAvg ###
+--- Pooled, all matched seed-capital-scenario pairs (n=204) ---
+  Return %:  mean delta = -0.240 pp, sd = 12.084 pp | paired t = -0.283, p = 0.7773 | Wilcoxon W = 8182.0, p = 0.7422
+  Default rate (pp): mean delta = +0.029 pp, sd = 1.156 pp | paired t = 0.354, p = 0.7238 | Wilcoxon W = 4290.0, p = 0.8221
+--- Stressed-only (low/medium/high default) (n=153) ---
+  Return %:  mean delta = -0.946 pp, sd = 11.850 pp | paired t = -0.988, p = 0.3249 | Wilcoxon W = 4052.0, p = 0.4440
+  Default rate (pp): mean delta = +0.038 pp, sd = 1.336 pp | paired t = 0.354, p = 0.7241 | Wilcoxon W = 4290.0, p = 0.8221
+### SCAFFOLD (c_lr=0.25) vs. FedAvg ###
+--- Pooled, all matched seed-capital-scenario pairs (n=204) ---
+  Return %:  mean delta = -2.185 pp, sd = 14.478 pp | paired t = -2.155, p = 0.0323 | Wilcoxon W = 9260.0, p = 0.1921
+  Default rate (pp): mean delta = -0.099 pp, sd = 1.443 pp | paired t = -0.981, p = 0.3276 | Wilcoxon W = 5109.0, p = 0.1947
+--- Stressed-only (low/medium/high default) (n=153) ---
+  Return %:  mean delta = -1.548 pp, sd = 13.692 pp | paired t = -1.398, p = 0.1641 | Wilcoxon W = 5164.0, p = 0.2318
+  Default rate (pp): mean delta = -0.132 pp, sd = 1.666 pp | paired t = -0.981, p = 0.3280 | Wilcoxon W = 5109.0, p = 0.1947

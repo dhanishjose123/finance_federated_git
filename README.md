@@ -1,67 +1,32 @@
-# Reviewer Package
+# Supply-Chain Finance: Code and Results
 
-This folder contains a compact reviewer-facing package for the study:
+Research code and compact evidence for **Blockchain-Enabled Supply Chain Finance with Reinforcement Learning Interest-Rate Adaptation and Decentralised Q-Table Aggregation**.
 
-**Adaptive Supply-Chain Finance under Fragmented Borrower Information: Federated Learning Evidence from a High-Value Agricultural Supply Chain**
+This is the project's only GitHub folder. The manuscript, bibliography and manuscript figures are intentionally excluded.
 
-The full working folder contains additional raw simulations, intermediate outputs, and local build files. This package keeps only the files needed to inspect the manuscript, reproduce the main simulation logic, and verify the reported results.
+## Organisation
 
-## Folder Contents
+- `code_and_results/`: simulation engine, experiment runners and compact results.
+- `code_and_results/rl_optimization/`: Stage 1 base-APR and Stage 2 borrower-screening selection.
+- `code_and_results/combined_significance/`: pooled Stage 3 and Stage 4 comparisons.
+- `code_and_results/chaincode/`, `code_and_results/hyperledger/`: retained chaincode and Caliper evidence.
+- `code_and_results/fabric_integration/`: integration code.
+- `docs/MANUSCRIPT_MAP.md`: stage-to-code and evidence map, with supplementary work identified separately.
+- `docs/package_manifest.csv`: refreshed file inventory with source paths and SHA-256 hashes.
+- `docs/BENCHMARK_NOTES.md`: workload counts, units, software evidence and aggregation interpretation.
+- `code_and_results/README.md`: current stage definitions, metric denominators and reproduction instructions.
 
-- `manuscript/`: manuscript source, bibliography, compiled manuscript PDF, supplementary material, and manuscript figures.
-- `review_documents/`: fact-check and reference-check notes used during manuscript preparation.
-- `code_and_results/`: simulation code, compact result summaries, trained Q-table examples, Hyperledger/Caliper artifacts, and experiment notes.
+Run Python scripts from `code_and_results/` to preserve their relative paths:
 
-## What the Study Evaluates
-
-The study tests a blockchain-enabled supply-chain finance workflow with:
-
-- RL-based base APR selection by financiers.
-- Borrower-side RL risk-premium learning.
-- Ledger-mediated federated Q-table aggregation across financiers.
-- Hyperledger Fabric workflow support for auction, finance request, disbursement, sale, repayment, and federated model-update functions.
-
-Raw borrower records remain local to each financier. The shared objects are Q-table/model updates and aggregated Q-table versions. The implementation should therefore be described as privacy-conscious rather than formally privacy-preserving.
-
-## Experimental Evidence
-
-The manuscript reports:
-
-- preparatory RL parameter selection,
-- isolated RL versus federated RL borrower screening,
-- aggregation-rule comparison across FedAvg, FedProx, SCAFFOLD, and visit-count-weighted aggregation,
-- a 50-borrower SCAFFOLD correction-rate sensitivity check,
-- fixed-capital scalability tests,
-- Hyperledger Caliper benchmarking of key smart-contract functions.
-
-Large raw simulation workbooks and local cache/build files are intentionally excluded. The included spreadsheets and reports are the compact artifacts used to support the manuscript tables and claims.
-
-## Reproducibility Notes
-
-Python dependencies for the simulation code are listed in:
-
-```text
-code_and_results/requirements.txt
+```sh
+cd code_and_results
+pip install -r requirements.txt
 ```
 
-Install them with:
+The four stages are base-APR selection, borrower-screening parameter selection, isolated versus federated screening, and aggregation-rule comparison. Older Stage A/B/C/D filenames are retained to avoid breaking paths. Scalability and visit-weighted comparisons are supplementary.
 
-```bash
-pip install -r code_and_results/requirements.txt
-```
+The full-strategy comparison has partial summaries for three strategies at seed 709098, but no final combined report. Do not treat these partial outputs as a completed comparison. See the map for other limitations.
 
-The main simulation engine in the compact package is:
+Raw borrower records remain local in the proposed workflow; ledger-mediated aggregation shares model updates. Results should be interpreted under the tested simulation settings.
 
-```text
-code_and_results/egt_apr_simulation.py
-```
-
-Some experiments are computationally heavy because they use multiple seeds, capital levels, default profiles, and borrower populations. Reviewers can inspect the included result summaries without rerunning every experiment.
-
-## Hyperledger Material
-
-The refreshed Hyperledger chaincode file is available at:
-
-```text
-code_and_results/hyperledger/cardamom_11.js
-```
+Older EGT experiments, nested copies and manuscript-review documents are archived outside this repository in the working project's `optional_material/git_archive_*` folder. Relevant supplementary results and Caliper logs are retained. The refresh excludes large per-run workbooks and caches. No experiments, deployment, commits or remote publication are performed by packaging.

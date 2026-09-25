@@ -1,0 +1,21 @@
+Stage 1 (full): RL APR + RL screening vs. fixed-rate baselines
+======================================================================
+Days: 4000 | Seeds: [709098, 436570, 831197] | Financiers per group: 3
+Capital levels: [1000000.0, 5000000.0, 10000000.0]
+Default scenarios: ['none_default', 'low_default', 'medium_default', 'high_default']
+
+--- Overall summary (pooled across all seeds, capitals, scenarios) ---
+                         strategy  runs  initial_capital  final_capital  mean_return_pct   avg_apr  default_to_initial_capital_rate_pct  avg_utilization
+   RL APR + isolated RL screening     3      576000000.0   9.924765e+08        72.304948 13.509259                             7.959050              0.0
+RL APR + FL-RL (FedAvg) screening     3      576000000.0   1.001330e+09        73.842066 12.592593                             6.146106              0.0
+            RL APR + no screening     3      576000000.0   7.951882e+08        38.053509  7.842593                            26.399862              0.0
+      Fixed 6% APR + no screening     3      576000000.0   6.613207e+08        14.812624  6.000000                            23.508679              0.0
+      Fixed 8% APR + no screening     3      576000000.0   7.130420e+08        23.792014  8.000000                            27.911091              0.0
+     Fixed 10% APR + no screening     3      576000000.0   7.676061e+08        33.264956 10.000000                            32.734161              0.0
+
+--- Matched-pair significance: RL APR + isolated RL screening vs. Fixed 10% APR + no screening ---
+Matched pairs: n=36
+  Return %: mean delta = +104.993, sd = 112.894 | paired t = 5.580, p = 0.0000 | Wilcoxon p = 0.0000
+  Default rate (pp): mean delta = -24.775, sd = 24.053 | paired t = -6.180, p = 0.0000 | Wilcoxon p = 0.0000
+
+Elapsed: 8635.3s

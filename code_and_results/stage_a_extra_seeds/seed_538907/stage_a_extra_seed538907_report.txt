@@ -1,0 +1,39 @@
+Stage A EXTRA SEED 538907: Isolated RL vs. Federated (FedAvg)
+=============================================================
+Days: 4000 | Seeds: [538907] | Financiers per group: 3
+Run design: separate matched counterfactual policy runs
+Non-IID primary share: 0.5 (1.0 = fully shared/IID pool)
+Non-IID applies to: ('rl', 'fl_rl') (all groups matched, none excluded)
+Default scenarios: ['none_default', 'low_default', 'medium_default', 'high_default']
+Capital levels per financier: [1000000.0, 5000000.0, 10000000.0]
+
+--- Matched comparison vs. Isolated RL ---
+                matched_comparison wins  other_mean_return_pct  baseline_mean_return_pct  delta_return_pp  delta_default_count_rate_pp  mean_net_profit_diff
+FedAvg (federated) vs. Isolated RL 6/12             158.022422                163.946784        -5.924362                    -0.593523         -23654.212641
+
+--- Overall (pooled across all seeds, scenarios, capital levels) ---
+wholesaler_policy  financiers  runs  total_initial_capital  total_final_capital  mean_final_capital  mean_return_pct  total_defaults  total_loans  default_count_rate  default_amount_to_initial_capital_rate              label
+               rl           3    36            192000000.0         3.329160e+08        9.247666e+06        73.393746            3026        90400            0.040952                                0.064648        Isolated RL
+            fl_rl           3    36            192000000.0         3.320644e+08        9.224012e+06        72.950230            2428        87681            0.035017                                0.058329 FedAvg (federated)
+
+--- By default scenario (pooled across seeds and capital levels) ---
+default_scenario wholesaler_policy  financiers  runs  total_initial_capital  total_final_capital  mean_final_capital  mean_return_pct  total_defaults  total_loans  default_count_rate  default_amount_to_initial_capital_rate              label
+    high_default                rl           3     9             48000000.0         7.543899e+07        8.382110e+06        57.164566            1166        16407            0.073389                                0.120639        Isolated RL
+    high_default             fl_rl           3     9             48000000.0         7.533898e+07        8.370998e+06        56.956215            1118        16959            0.075066                                0.138215 FedAvg (federated)
+     low_default                rl           3     9             48000000.0         8.704800e+07        9.672000e+06        81.350004             962        22710            0.045182                                0.061772        Isolated RL
+     low_default             fl_rl           3     9             48000000.0         8.502942e+07        9.447713e+06        77.144618             435        21597            0.021197                                0.037981 FedAvg (federated)
+  medium_default             fl_rl           3     9             48000000.0         8.614337e+07        9.571486e+06        79.465358             875        21675            0.043804                                0.057121 FedAvg (federated)
+  medium_default                rl           3     9             48000000.0         8.532241e+07        9.480268e+06        77.755017             898        22710            0.045237                                0.076180        Isolated RL
+    none_default             fl_rl           3     9             48000000.0         8.555267e+07        9.505852e+06        78.234729               0        27450            0.000000                                0.000000 FedAvg (federated)
+    none_default                rl           3     9             48000000.0         8.510659e+07        9.456288e+06        77.305399               0        28573            0.000000                                0.000000        Isolated RL
+
+--- By capital level (pooled across seeds and default scenarios) ---
+ capital_per_financier wholesaler_policy  financiers  runs  total_initial_capital  total_final_capital  mean_final_capital  mean_return_pct  total_defaults  total_loans  default_count_rate  default_amount_to_initial_capital_rate              label
+             1000000.0                rl           3    12             12000000.0         5.666600e+07        4.722167e+06       372.216678             550        26010            0.028268                                0.117497        Isolated RL
+             1000000.0             fl_rl           3    12             12000000.0         5.427808e+07        4.523173e+06       352.317320             547        25205            0.029451                                0.114408 FedAvg (federated)
+             5000000.0             fl_rl           3    12             60000000.0         1.083136e+08        9.026131e+06        80.522620             989        30377            0.040972                                0.041568 FedAvg (federated)
+             5000000.0                rl           3    12             60000000.0         1.072984e+08        8.941535e+06        78.830692            1310        33137            0.046082                                0.052935        Isolated RL
+            10000000.0             fl_rl           3    12            120000000.0         1.694728e+08        1.412273e+07        41.227326             892        32099            0.034627                                0.019012 FedAvg (federated)
+            10000000.0                rl           3    12            120000000.0         1.689516e+08        1.407930e+07        40.792980            1166        31253            0.048506                                0.023512        Isolated RL
+
+Elapsed: 2087.9s

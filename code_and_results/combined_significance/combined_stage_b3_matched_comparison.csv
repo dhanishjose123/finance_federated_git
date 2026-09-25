@@ -1,0 +1,3 @@
+matched_comparison,wins,other_mean_return_pct,baseline_mean_return_pct,delta_return_pp,delta_default_count_rate_pp,mean_net_profit_diff
+FedProx vs. FedAvg (baseline),91/204,163.46801827453092,163.70757662448045,-0.23955834994953307,0.028652120807595022,7018.6565819229
+SCAFFOLD (c_lr=0.25) vs. FedAvg (baseline),94/204,161.52280920412286,163.70757662448045,-2.1847674203575878,-0.09911822543326593,-35190.244057476055

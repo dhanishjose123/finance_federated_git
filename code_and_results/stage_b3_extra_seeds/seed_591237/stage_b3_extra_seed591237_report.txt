@@ -1,0 +1,48 @@
+Stage B3 EXTRA SEED 591237: FedAvg vs. FedProx vs. SCAFFOLD (c_lr=0.25)
+=======================================================================
+Days: 4000 | Seeds: [591237] | Financiers per group: 3
+Run design: separate matched counterfactual policy runs
+Non-IID primary share: 0.5 (1.0 = fully shared/IID pool)
+Non-IID applies to: ('fl_rl', 'fl_rl_prox', 'fl_rl_scaffold') (all groups matched, none excluded)
+Default scenarios: ['none_default', 'low_default', 'medium_default', 'high_default']
+Capital levels per financier: [1000000.0, 5000000.0, 10000000.0]
+
+--- Matched comparison vs. FedAvg (baseline) ---
+                        matched_comparison wins  other_mean_return_pct  baseline_mean_return_pct  delta_return_pp  delta_default_count_rate_pp  mean_net_profit_diff
+             FedProx vs. FedAvg (baseline) 4/12             172.956298                175.939863        -2.983565                     0.220405          -5449.438496
+SCAFFOLD (c_lr=0.25) vs. FedAvg (baseline) 5/12             167.840865                175.939863        -8.098998                     0.299944          -3286.505702
+
+--- Overall (pooled across all seeds, scenarios, capital levels) ---
+wholesaler_policy  financiers  runs  total_initial_capital  total_final_capital  mean_final_capital  mean_return_pct  total_defaults  total_loans  default_count_rate  default_amount_to_initial_capital_rate                label
+            fl_rl           3    36            192000000.0         3.380049e+08        9.389025e+06        76.044226            3007        93202            0.039059                                0.065028    FedAvg (baseline)
+   fl_rl_scaffold           3    36            192000000.0         3.378866e+08        9.385739e+06        75.982604            3096        94413            0.042058                                0.073296 SCAFFOLD (c_lr=0.25)
+       fl_rl_prox           3    36            192000000.0         3.378087e+08        9.383576e+06        75.942049            3216        94616            0.041263                                0.071282              FedProx
+
+--- By default scenario (pooled across seeds and capital levels) ---
+default_scenario wholesaler_policy  financiers  runs  total_initial_capital  total_final_capital  mean_final_capital  mean_return_pct  total_defaults  total_loans  default_count_rate  default_amount_to_initial_capital_rate                label
+    high_default        fl_rl_prox           3     9             48000000.0         7.792647e+07        8.658497e+06        62.346814            1162        19373            0.063849                                0.124927              FedProx
+    high_default             fl_rl           3     9             48000000.0         7.733405e+07        8.592672e+06        61.112607            1095        18390            0.067497                                0.121956    FedAvg (baseline)
+    high_default    fl_rl_scaffold           3     9             48000000.0         7.633208e+07        8.481342e+06        59.025169            1315        19485            0.077945                                0.150578 SCAFFOLD (c_lr=0.25)
+     low_default    fl_rl_scaffold           3     9             48000000.0         9.093807e+07        1.010423e+07        89.454310             664        24526            0.030480                                0.063018 SCAFFOLD (c_lr=0.25)
+     low_default             fl_rl           3     9             48000000.0         9.075797e+07        1.008422e+07        89.079095             799        24443            0.032730                                0.066765    FedAvg (baseline)
+     low_default        fl_rl_prox           3     9             48000000.0         9.062857e+07        1.006984e+07        88.809522             891        24430            0.044209                                0.077066              FedProx
+  medium_default             fl_rl           3     9             48000000.0         8.588675e+07        9.542973e+06        78.930739            1113        21877            0.056009                                0.071390    FedAvg (baseline)
+  medium_default        fl_rl_prox           3     9             48000000.0         8.401339e+07        9.334821e+06        75.027893            1163        22270            0.056994                                0.083134              FedProx
+  medium_default    fl_rl_scaffold           3     9             48000000.0         8.396128e+07        9.329031e+06        74.919329            1117        22152            0.059809                                0.079589 SCAFFOLD (c_lr=0.25)
+    none_default    fl_rl_scaffold           3     9             48000000.0         8.665517e+07        9.628352e+06        80.531609               0        28250            0.000000                                0.000000 SCAFFOLD (c_lr=0.25)
+    none_default        fl_rl_prox           3     9             48000000.0         8.524031e+07        9.471145e+06        77.583969               0        28543            0.000000                                0.000000              FedProx
+    none_default             fl_rl           3     9             48000000.0         8.402614e+07        9.336238e+06        75.054464               0        28492            0.000000                                0.000000    FedAvg (baseline)
+
+--- By capital level (pooled across seeds and default scenarios) ---
+ capital_per_financier wholesaler_policy  financiers  runs  total_initial_capital  total_final_capital  mean_final_capital  mean_return_pct  total_defaults  total_loans  default_count_rate  default_amount_to_initial_capital_rate                label
+             1000000.0             fl_rl           3    12             12000000.0         6.063570e+07        5.052975e+06       405.297479             576        26909            0.024496                                0.118306    FedAvg (baseline)
+             1000000.0        fl_rl_prox           3    12             12000000.0         5.942712e+07        4.952260e+06       395.226013             648        26675            0.027896                                0.131321              FedProx
+             1000000.0    fl_rl_scaffold           3    12             12000000.0         5.743911e+07        4.786593e+06       378.659267             687        26507            0.028499                                0.143149 SCAFFOLD (c_lr=0.25)
+             5000000.0        fl_rl_prox           3    12             60000000.0         1.099898e+08        9.165820e+06        83.316409            1350        33819            0.053864                                0.055939              FedProx
+             5000000.0             fl_rl           3    12             60000000.0         1.096573e+08        9.138110e+06        82.762192            1170        33220            0.042073                                0.049884    FedAvg (baseline)
+             5000000.0    fl_rl_scaffold           3    12             60000000.0         1.093885e+08        9.115709e+06        82.314173            1198        34314            0.041644                                0.050532 SCAFFOLD (c_lr=0.25)
+            10000000.0    fl_rl_scaffold           3    12            120000000.0         1.710590e+08        1.425492e+07        42.549154            1211        33592            0.056033                                0.026208 SCAFFOLD (c_lr=0.25)
+            10000000.0        fl_rl_prox           3    12            120000000.0         1.683918e+08        1.403265e+07        40.326473            1218        34122            0.042029                                0.026585              FedProx
+            10000000.0             fl_rl           3    12            120000000.0         1.677119e+08        1.397599e+07        39.759918            1261        33073            0.050607                                0.026893    FedAvg (baseline)
+
+Elapsed: 1365.2s

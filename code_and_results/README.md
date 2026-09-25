@@ -1,112 +1,68 @@
-# Adaptive Supply-Chain Finance with Federated Reinforcement Learning
+# Simulation Code and Results
 
-This folder contains the manuscript, simulation code, figures, benchmark material, and checked results for the study:
+This directory supports the current manuscript's four-stage evaluation.
+Manuscripts, bibliographies and manuscript figures are deliberately excluded.
 
-**Adaptive Supply-Chain Finance under Fragmented Borrower Information: Federated Learning Evidence from a High-Value Agricultural Supply Chain**
+## Evidence by Stage
 
-The study evaluates a blockchain-enabled supply-chain finance workflow in which financiers use reinforcement learning (RL) to set finance terms and federated RL to aggregate borrower-screening Q-tables without pooling raw borrower records.
+| Stage | Code and saved evidence |
+| --- | --- |
+| 1: financier base-APR selection | `rl_optimization/rl_fin/` |
+| 1b: full strategy comparison | `stage1_full_strategy_comparison.py`, `stage1_full_strategy_comparison/`; partial outputs, not a completed comparison |
+| 2: borrower-screening parameter selection | `rl_optimization/rl_borrower_opt/` |
+| 3: isolated versus federated screening | `checked_results_20260816/stage_a_isolated_vs_federated/`, `stage_a_extra_seeds/` |
+| 4: aggregation-rule comparison | `stage_b3_scaffold_lr025_comparison/`, `stage_b3_extra_seeds/`; older aggregation results in `checked_results_20260816/stage_b_fedavg_fedprox_scaffold/` |
+| Pooled Stage 3/4 inference | `combined_significance/`, `combine_and_retest_significance.py` |
+| SCAFFOLD sensitivity | `scaffold_sensitivity_50_borrowers/` |
+| Non-IID sensitivity | `noniid_sensitivity_50_borrowers/` |
+| Convergence evidence | `convergence_analysis/` raw CSVs; `convergence_analysis.py` |
+| Blockchain benchmark | `hyperledger/caliper_300tps_summary.csv`, `hyperledger/caliper_300tps_logs/` |
 
-## Main Components
+Fixed/proportional-capital scalability and visit-weighted comparisons are
+supplementary, not additional numbered manuscript stages. Their existing
+directories are retained. Older EGT experiments and duplicate copies were
+archived outside this repository.
 
-- `manuscript/`: current LaTeX manuscript, bibliography, compiled PDF, supplementary material, and final figure PDFs.
-- `latex/`: editable LaTeX/TikZ figure sources used to generate the manuscript figures.
-- `egt_apr_simulation.py`: core discrete-event simulation engine for APR selection, borrower screening, defaults, repayment, and federated aggregation.
-- `federated_comparison_common.py`: shared utilities for staged federated comparison experiments.
-- `stage_b_fedavg_fedprox_scaffold.py`: Stage 2 aggregation-rule comparison among FedAvg, FedProx, and SCAFFOLD.
-- `stage_b2_visitweighted_comparison.py`: additional comparison for the visit-count-weighted Q-table aggregation rule.
-- `scaffold_sensitivity_50_borrowers.py`: 50-borrower SCAFFOLD correction-rate sensitivity test against isolated RL.
-- `run_multiple_capitals.py`: older multi-capital finance simulation runner retained for reproducibility.
-- `fabric_integration/`: Python service material for linking RL finance decisions with the Fabric workflow.
-- `hyperledger/`: Caliper and blockchain benchmark artifacts retained from earlier experiments.
-- `chaincode/cardamom_11.js`: Hyperledger Fabric smart contract included in the GitHub-ready package.
-- `checked_results_20260816/`: curated checked result folders used for the manuscript tables.
-- `finance_federated_git/`: compact reviewer-facing package prepared for repository upload.
+## Design and Metrics
 
-## Experimental Structure
+The main federation comparisons use 39 borrowers, a 4000-day nominal horizon,
+three financiers per policy, and 1M, 5M or 10M initial capital per financier.
+Aggregation occurs every 30 simulation days. Three seeds produce 36 matched
+seed-capital-stress scenarios and 108 financier observations per policy.
+Seventeen seeds produce 204 scenarios and 612 observations per policy.
 
-The manuscript uses a staged evaluation design.
+The non-IID setting is 0.5: each financier is eligible for all borrowers in its
+primary stress tier and a sampled half of each other tier. It is not a guarantee
+that half of the realised portfolio belongs to the primary tier.
 
-1. **Preparatory parameter selection**  
-   Selects the RL base-APR learner and borrower-side RL screening parameters. This is not treated as a numbered experimental stage in the manuscript.
+Main comparisons average financier loan-default ratios within scenarios.
+The 50-borrower sensitivity instead uses group defaulted loans divided by group
+issued loans. Default amounts divided by initial capital are a different metric.
+Capital-pooled returns and equally weighted scenario differences must not be
+treated as identical summaries.
 
-2. **Stage 1: isolated versus federated borrower screening**  
-   Compares isolated RL borrower screening with federated RL borrower screening under matched seed, capital, and default-severity settings.
+The SCAFFOLD sensitivity uses 50 borrowers, 2000 days, three seeds and four
+correction rates (0.25, 0.50, 0.75, 1.00), with 36 comparisons per rate.
+Outstanding loans can be followed beyond the nominal horizon for settlement.
 
-3. **Stage 2: federated aggregation-rule comparison**  
-   Compares FedAvg, FedProx, a tabular SCAFFOLD adaptation, and a visit-count-weighted aggregation rule under non-IID borrower portfolios.
+## Running
 
-4. **SCAFFOLD sensitivity check**  
-   Tests SCAFFOLD correction rates `0.25`, `0.50`, `0.75`, and `1.00` against isolated RL with 50 borrowers. The completed run is stored in `scaffold_sensitivity_50_borrowers/`.
+Run from this directory to preserve relative paths:
 
-5. **Stage 3: fixed-capital scalability**  
-   Increases the number of wholesalers while keeping per-financier capital fixed. The checked results are in `checked_results_20260816/stage_c_fixed_2000d_scalability/`.
-
-6. **Blockchain benchmarking**  
-   Uses Hyperledger Caliper to test the main smart-contract functions, including auction, finance, sale, repayment, and federated Q-table update operations.
-
-The folder also contains proportional-capital scalability outputs in `checked_results_20260816/stage_d_proportional_results_checked_20260816/`. These are retained as additional checked material, but they are not presented as a numbered stage in the current manuscript.
-
-## Key Result Locations
-
-- Stage 1 isolated-vs-federated results: `checked_results_20260816/stage_a_isolated_vs_federated/`
-- Stage 2 FedAvg/FedProx/SCAFFOLD results: `checked_results_20260816/stage_b_fedavg_fedprox_scaffold/`
-- Stage 2 visit-weighted results: `stage_b2_visitweighted_comparison/`
-- SCAFFOLD 50-borrower sensitivity results: `scaffold_sensitivity_50_borrowers/`
-- Stage 3 fixed-capital scalability results: `checked_results_20260816/stage_c_fixed_2000d_scalability/`
-- Additional proportional-capital scalability outputs: `checked_results_20260816/stage_d_proportional_results_checked_20260816/`
-- Compact reviewer results: `checked_results_20260816/simulation_results_for_reviewers/`
-
-## Running the Main Scripts
-
-Install the Python dependencies:
-
-```bash
-pip install pandas openpyxl simpy
+```sh
+pip install -r requirements.txt
 ```
 
-Run the 50-borrower SCAFFOLD sensitivity test:
+Experiment entry points include `stage1_full_strategy_comparison.py`,
+`stage_a_extra_seeds.py`, `stage_b3_extra_seeds.py`, and
+`scaffold_sensitivity_50_borrowers.py`. They may take hours and write results.
+Use a separate checkout for new runs. The shared engine is
+`egt_apr_simulation.py`; its historical filename does not imply EGT is part
+of the reported four-stage evaluation.
 
-```bash
-python scaffold_sensitivity_50_borrowers.py
-```
+See [the manuscript map](../docs/MANUSCRIPT_MAP.md) and
+[benchmark notes](../docs/BENCHMARK_NOTES.md). The aggregation benchmark
+reports a compound workload, not 311 successful aggregation calls.
 
-Run the Stage 2 FedAvg/FedProx/SCAFFOLD comparison:
-
-```bash
-python stage_b_fedavg_fedprox_scaffold.py
-```
-
-Run the visit-weighted aggregation comparison:
-
-```bash
-python stage_b2_visitweighted_comparison.py
-```
-
-The experiment scripts write checkpoint CSV files and final Excel summaries where applicable. Several full-scale simulations are computationally heavy, so the checked result folders are included for manuscript verification.
-
-## Manuscript Build
-
-The active manuscript is:
-
-```text
-manuscript/manuscript.tex
-```
-
-Build from the `manuscript/` folder:
-
-```bash
-pdflatex -interaction=nonstopmode manuscript.tex
-bibtex manuscript
-pdflatex -interaction=nonstopmode manuscript.tex
-pdflatex -interaction=nonstopmode manuscript.tex
-```
-
-The figure PDFs used by the manuscript are already present in `manuscript/`. Editable figure sources are in `latex/`.
-
-## Notes on Federated Learning Claims
-
-The project implements ledger-mediated federated Q-table aggregation. Raw borrower records remain local to each financier. The shared objects are model-level Q-table updates and aggregated Q-table versions. The prototype should be described as privacy-conscious, not as formally privacy-preserving, because it does not implement differential privacy, secure aggregation, or secure multiparty computation.
-
-## Reviewer Package
-
-The folder `finance_federated_git/` is a compact package for reviewers and repository upload. It intentionally excludes large raw workbooks, local caches, and intermediate files. Use the full working folder when checking the latest scripts and checked results.
+The archived code and data support inspection, but their inclusion does not
+resolve pending manuscript comparisons or certify all reported claims.

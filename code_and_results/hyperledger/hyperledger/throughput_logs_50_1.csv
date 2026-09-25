@@ -1,2 +1,0 @@
-function,round,load,success,fail,sendRate,maxLatency,minLatency,avgLatency,throughput
-purchase,1,50,113,387,41.6,2.94,0.06,0.23,41.1

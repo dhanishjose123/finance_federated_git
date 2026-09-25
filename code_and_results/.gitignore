@@ -39,3 +39,6 @@ simulation_results_*.xlsx
 graphify-out/
 backup/
 scratch/
+
+# Benchmark evidence is intentionally retained.
+!hyperledger/caliper_300tps_logs/*.log

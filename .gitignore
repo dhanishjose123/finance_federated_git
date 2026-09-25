@@ -10,3 +10,15 @@ __pycache__/
 *.pyc
 .DS_Store
 Thumbs.db
+
+# Manuscript material stays in the private working project.
+/manuscript/
+/latex/
+/latex_source/
+*.tex
+*.bib
+*.cls
+*.tikz
+
+# Retain primary benchmark evidence, despite the general build-log exclusion.
+!/code_and_results/hyperledger/caliper_300tps_logs/*.log

@@ -1,0 +1,714 @@
+2026.08.11-09:24:47.478[32m info [39m [caliper] [cli-launch-manager] 	Set workspace path: /home/dhanish/fabric_sfc/caliper-bench
+2026.08.11-09:24:47.479[32m info [39m [caliper] [cli-launch-manager] 	Set benchmark configuration path: /home/dhanish/fabric_sfc/caliper-bench/benchmarks/benchmark-getallfinancerequests-agro1008-finance-300.yaml
+2026.08.11-09:24:47.479[32m info [39m [caliper] [cli-launch-manager] 	Set network configuration path: /home/dhanish/fabric_sfc/caliper-bench/generated/caliper-network-agro1008-finance.yaml
+2026.08.11-09:24:47.479[32m info [39m [caliper] [cli-launch-manager] 	Set SUT type: fabric
+2026.08.11-09:24:47.494[32m info [39m [caliper] [benchmark-validator] 	No observer specified, will default to `none`
+2026.08.11-09:24:47.494[32m info [39m [caliper] [caliper-engine] 	Starting benchmark flow
+2026.08.11-09:24:47.495[32m info [39m [caliper] [caliper-engine] 	Network configuration attribute "caliper.command.start" is not present, skipping start command
+2026.08.11-09:24:47.874[32m info [39m [caliper] [FabricConnectorFactory] 	Initializing gateway connector compatible with installed SDK: 2.2.20
+2026.08.11-09:24:47.883[32m info [39m [caliper] [IdentityManager] 	Adding User0 (admin=true) as User0 for organization FinanciersMSP
+2026.08.11-09:24:47.889[32m info [39m [caliper] [IdentityManager] 	Adding User1 (admin=false) as User1 for organization FinanciersMSP
+2026.08.11-09:24:47.890[32m info [39m [caliper] [IdentityManager] 	Adding User2 (admin=false) as User2 for organization FinanciersMSP
+2026.08.11-09:24:47.891[32m info [39m [caliper] [IdentityManager] 	Adding User3 (admin=false) as User3 for organization FinanciersMSP
+2026.08.11-09:24:47.892[32m info [39m [caliper] [IdentityManager] 	Adding User4 (admin=false) as User4 for organization FinanciersMSP
+2026.08.11-09:24:47.893[32m info [39m [caliper] [IdentityManager] 	Adding User5 (admin=false) as User5 for organization FinanciersMSP
+2026.08.11-09:24:47.894[32m info [39m [caliper] [IdentityManager] 	Adding User0 (admin=true) as _WholesalersMSP_User0 for organization WholesalersMSP
+2026.08.11-09:24:47.895[32m info [39m [caliper] [IdentityManager] 	Adding User1 (admin=false) as _WholesalersMSP_User1 for organization WholesalersMSP
+2026.08.11-09:24:47.895[32m info [39m [caliper] [IdentityManager] 	Adding User2 (admin=false) as _WholesalersMSP_User2 for organization WholesalersMSP
+2026.08.11-09:24:47.896[32m info [39m [caliper] [IdentityManager] 	Adding User3 (admin=false) as _WholesalersMSP_User3 for organization WholesalersMSP
+2026.08.11-09:24:47.897[32m info [39m [caliper] [IdentityManager] 	Adding User4 (admin=false) as _WholesalersMSP_User4 for organization WholesalersMSP
+2026.08.11-09:24:47.898[32m info [39m [caliper] [IdentityManager] 	Adding User5 (admin=false) as _WholesalersMSP_User5 for organization WholesalersMSP
+2026.08.11-09:24:47.900[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Fabric SDK version: 2.2.20; TLS based on FinanciersMSP: server
+2026.08.11-09:24:47.900[32m info [39m [caliper] [caliper-engine] 	Executed "init" step in 0.001 seconds
+2026.08.11-09:24:47.901[33m warn [39m [caliper] [connectors/v2/FabricGateway] 	Install smart contract not available with Fabric SDK version: 2.2.20
+2026.08.11-09:24:47.901[32m info [39m [caliper] [caliper-engine] 	Executed "install" step in 0 seconds
+2026.08.11-09:24:47.903[32m info [39m [caliper] [monitor.js] 	No resource monitors specified
+2026.08.11-09:24:47.904[32m info [39m [caliper] [default-observer] 	Observer interval set to 5000 milliseconds
+2026.08.11-09:24:47.907[32m info [39m [caliper] [round-orchestrator] 	Preparing worker connections
+2026.08.11-09:24:47.907[32m info [39m [caliper] [worker-orchestrator] 	Launching worker 1 of 5
+2026.08.11-09:24:47.912[32m info [39m [caliper] [worker-orchestrator] 	Launching worker 2 of 5
+2026.08.11-09:24:47.914[32m info [39m [caliper] [worker-orchestrator] 	Launching worker 3 of 5
+2026.08.11-09:24:47.917[32m info [39m [caliper] [worker-orchestrator] 	Launching worker 4 of 5
+2026.08.11-09:24:47.918[32m info [39m [caliper] [worker-orchestrator] 	Launching worker 5 of 5
+2026.08.11-09:24:47.920[32m info [39m [caliper] [worker-orchestrator] 	Messenger not configured, entering configure phase...
+2026.08.11-09:24:47.921[32m info [39m [caliper] [worker-orchestrator] 	No existing workers detected, entering worker launch phase...
+2026.08.11-09:24:47.921[32m info [39m [caliper] [worker-orchestrator] 	Waiting for 5 workers to be connected...
+2026.08.11-09:24:48.293[32m info [39m [caliper] [cli-launch-worker] 	Set workspace path: /home/dhanish/fabric_sfc/caliper-bench
+2026.08.11-09:24:48.294[32m info [39m [caliper] [cli-launch-worker] 	Set benchmark configuration path: /home/dhanish/fabric_sfc/caliper-bench/benchmarks/benchmark-getallfinancerequests-agro1008-finance-300.yaml
+2026.08.11-09:24:48.295[32m info [39m [caliper] [cli-launch-worker] 	Set network configuration path: /home/dhanish/fabric_sfc/caliper-bench/generated/caliper-network-agro1008-finance.yaml
+2026.08.11-09:24:48.295[32m info [39m [caliper] [cli-launch-worker] 	Set SUT type: fabric
+2026.08.11-09:24:48.295[32m info [39m [caliper] [cli-launch-worker] 	Set workspace path: /home/dhanish/fabric_sfc/caliper-bench
+2026.08.11-09:24:48.296[32m info [39m [caliper] [cli-launch-worker] 	Set benchmark configuration path: /home/dhanish/fabric_sfc/caliper-bench/benchmarks/benchmark-getallfinancerequests-agro1008-finance-300.yaml
+2026.08.11-09:24:48.296[32m info [39m [caliper] [cli-launch-worker] 	Set network configuration path: /home/dhanish/fabric_sfc/caliper-bench/generated/caliper-network-agro1008-finance.yaml
+2026.08.11-09:24:48.297[32m info [39m [caliper] [cli-launch-worker] 	Set SUT type: fabric
+2026.08.11-09:24:48.296[32m info [39m [caliper] [cli-launch-worker] 	Set workspace path: /home/dhanish/fabric_sfc/caliper-bench
+2026.08.11-09:24:48.298[32m info [39m [caliper] [cli-launch-worker] 	Set benchmark configuration path: /home/dhanish/fabric_sfc/caliper-bench/benchmarks/benchmark-getallfinancerequests-agro1008-finance-300.yaml
+2026.08.11-09:24:48.298[32m info [39m [caliper] [cli-launch-worker] 	Set network configuration path: /home/dhanish/fabric_sfc/caliper-bench/generated/caliper-network-agro1008-finance.yaml
+2026.08.11-09:24:48.298[32m info [39m [caliper] [cli-launch-worker] 	Set SUT type: fabric
+2026.08.11-09:24:48.319[32m info [39m [caliper] [cli-launch-worker] 	Set workspace path: /home/dhanish/fabric_sfc/caliper-bench
+2026.08.11-09:24:48.321[32m info [39m [caliper] [cli-launch-worker] 	Set benchmark configuration path: /home/dhanish/fabric_sfc/caliper-bench/benchmarks/benchmark-getallfinancerequests-agro1008-finance-300.yaml
+2026.08.11-09:24:48.321[32m info [39m [caliper] [cli-launch-worker] 	Set network configuration path: /home/dhanish/fabric_sfc/caliper-bench/generated/caliper-network-agro1008-finance.yaml
+2026.08.11-09:24:48.321[32m info [39m [caliper] [cli-launch-worker] 	Set SUT type: fabric
+2026.08.11-09:24:48.332[32m info [39m [caliper] [cli-launch-worker] 	Set workspace path: /home/dhanish/fabric_sfc/caliper-bench
+2026.08.11-09:24:48.334[32m info [39m [caliper] [cli-launch-worker] 	Set benchmark configuration path: /home/dhanish/fabric_sfc/caliper-bench/benchmarks/benchmark-getallfinancerequests-agro1008-finance-300.yaml
+2026.08.11-09:24:48.334[32m info [39m [caliper] [cli-launch-worker] 	Set network configuration path: /home/dhanish/fabric_sfc/caliper-bench/generated/caliper-network-agro1008-finance.yaml
+2026.08.11-09:24:48.334[32m info [39m [caliper] [cli-launch-worker] 	Set SUT type: fabric
+2026.08.11-09:24:48.375[32m info [39m [caliper] [worker-orchestrator] 	5 workers connected, progressing to worker assignment phase.
+2026.08.11-09:24:48.375[32m info [39m [caliper] [worker-orchestrator] 	Workers currently unassigned, awaiting index assignment...
+2026.08.11-09:24:48.377[32m info [39m [caliper] [worker-orchestrator] 	Waiting for 5 workers to be assigned...
+2026.08.11-09:24:48.400[32m info [39m [caliper] [worker-orchestrator] 	5 workers assigned, progressing to worker initialization phase.
+2026.08.11-09:24:48.400[32m info [39m [caliper] [worker-orchestrator] 	Waiting for 5 workers to be ready...
+2026.08.11-09:24:48.401[32m info [39m [caliper] [worker-message-handler] 	Initializing Worker#0...
+2026.08.11-09:24:48.401[32m info [39m [caliper] [worker-message-handler] 	Initializing Worker#4...
+2026.08.11-09:24:48.401[32m info [39m [caliper] [worker-message-handler] 	Initializing Worker#1...
+2026.08.11-09:24:48.401[32m info [39m [caliper] [worker-message-handler] 	Initializing Worker#2...
+2026.08.11-09:24:48.401[32m info [39m [caliper] [worker-message-handler] 	Initializing Worker#3...
+2026.08.11-09:24:48.864[32m info [39m [caliper] [FabricConnectorFactory] 	Initializing gateway connector compatible with installed SDK: 2.2.20
+2026.08.11-09:24:48.872[32m info [39m [caliper] [IdentityManager] 	Adding User0 (admin=true) as User0 for organization FinanciersMSP
+2026.08.11-09:24:48.873[32m info [39m [caliper] [IdentityManager] 	Adding User1 (admin=false) as User1 for organization FinanciersMSP
+2026.08.11-09:24:48.874[32m info [39m [caliper] [IdentityManager] 	Adding User2 (admin=false) as User2 for organization FinanciersMSP
+2026.08.11-09:24:48.875[32m info [39m [caliper] [IdentityManager] 	Adding User3 (admin=false) as User3 for organization FinanciersMSP
+2026.08.11-09:24:48.876[32m info [39m [caliper] [IdentityManager] 	Adding User4 (admin=false) as User4 for organization FinanciersMSP
+2026.08.11-09:24:48.877[32m info [39m [caliper] [IdentityManager] 	Adding User5 (admin=false) as User5 for organization FinanciersMSP
+2026.08.11-09:24:48.878[32m info [39m [caliper] [IdentityManager] 	Adding User0 (admin=true) as _WholesalersMSP_User0 for organization WholesalersMSP
+2026.08.11-09:24:48.880[32m info [39m [caliper] [IdentityManager] 	Adding User1 (admin=false) as _WholesalersMSP_User1 for organization WholesalersMSP
+2026.08.11-09:24:48.882[32m info [39m [caliper] [IdentityManager] 	Adding User2 (admin=false) as _WholesalersMSP_User2 for organization WholesalersMSP
+2026.08.11-09:24:48.883[32m info [39m [caliper] [IdentityManager] 	Adding User3 (admin=false) as _WholesalersMSP_User3 for organization WholesalersMSP
+2026.08.11-09:24:48.884[32m info [39m [caliper] [IdentityManager] 	Adding User4 (admin=false) as _WholesalersMSP_User4 for organization WholesalersMSP
+2026.08.11-09:24:48.885[32m info [39m [caliper] [IdentityManager] 	Adding User5 (admin=false) as _WholesalersMSP_User5 for organization WholesalersMSP
+2026.08.11-09:24:48.887[32m info [39m [caliper] [worker-message-handler] 	Worker#3 initialized
+2026.08.11-09:24:48.908[32m info [39m [caliper] [FabricConnectorFactory] 	Initializing gateway connector compatible with installed SDK: 2.2.20
+2026.08.11-09:24:48.910[32m info [39m [caliper] [FabricConnectorFactory] 	Initializing gateway connector compatible with installed SDK: 2.2.20
+2026.08.11-09:24:48.911[32m info [39m [caliper] [FabricConnectorFactory] 	Initializing gateway connector compatible with installed SDK: 2.2.20
+2026.08.11-09:24:48.914[32m info [39m [caliper] [IdentityManager] 	Adding User0 (admin=true) as User0 for organization FinanciersMSP
+2026.08.11-09:24:48.915[32m info [39m [caliper] [IdentityManager] 	Adding User1 (admin=false) as User1 for organization FinanciersMSP
+2026.08.11-09:24:48.917[32m info [39m [caliper] [IdentityManager] 	Adding User2 (admin=false) as User2 for organization FinanciersMSP
+2026.08.11-09:24:48.917[32m info [39m [caliper] [IdentityManager] 	Adding User0 (admin=true) as User0 for organization FinanciersMSP
+2026.08.11-09:24:48.918[32m info [39m [caliper] [IdentityManager] 	Adding User3 (admin=false) as User3 for organization FinanciersMSP
+2026.08.11-09:24:48.919[32m info [39m [caliper] [IdentityManager] 	Adding User1 (admin=false) as User1 for organization FinanciersMSP
+2026.08.11-09:24:48.919[32m info [39m [caliper] [IdentityManager] 	Adding User0 (admin=true) as User0 for organization FinanciersMSP
+2026.08.11-09:24:48.919[32m info [39m [caliper] [IdentityManager] 	Adding User4 (admin=false) as User4 for organization FinanciersMSP
+2026.08.11-09:24:48.920[32m info [39m [caliper] [IdentityManager] 	Adding User1 (admin=false) as User1 for organization FinanciersMSP
+2026.08.11-09:24:48.920[32m info [39m [caliper] [IdentityManager] 	Adding User5 (admin=false) as User5 for organization FinanciersMSP
+2026.08.11-09:24:48.921[32m info [39m [caliper] [IdentityManager] 	Adding User2 (admin=false) as User2 for organization FinanciersMSP
+2026.08.11-09:24:48.921[32m info [39m [caliper] [IdentityManager] 	Adding User2 (admin=false) as User2 for organization FinanciersMSP
+2026.08.11-09:24:48.921[32m info [39m [caliper] [IdentityManager] 	Adding User0 (admin=true) as _WholesalersMSP_User0 for organization WholesalersMSP
+2026.08.11-09:24:48.922[32m info [39m [caliper] [IdentityManager] 	Adding User3 (admin=false) as User3 for organization FinanciersMSP
+2026.08.11-09:24:48.922[32m info [39m [caliper] [IdentityManager] 	Adding User3 (admin=false) as User3 for organization FinanciersMSP
+2026.08.11-09:24:48.923[32m info [39m [caliper] [IdentityManager] 	Adding User1 (admin=false) as _WholesalersMSP_User1 for organization WholesalersMSP
+2026.08.11-09:24:48.923[32m info [39m [caliper] [IdentityManager] 	Adding User4 (admin=false) as User4 for organization FinanciersMSP
+2026.08.11-09:24:48.923[32m info [39m [caliper] [IdentityManager] 	Adding User4 (admin=false) as User4 for organization FinanciersMSP
+2026.08.11-09:24:48.924[32m info [39m [caliper] [IdentityManager] 	Adding User2 (admin=false) as _WholesalersMSP_User2 for organization WholesalersMSP
+2026.08.11-09:24:48.924[32m info [39m [caliper] [IdentityManager] 	Adding User5 (admin=false) as User5 for organization FinanciersMSP
+2026.08.11-09:24:48.924[32m info [39m [caliper] [IdentityManager] 	Adding User3 (admin=false) as _WholesalersMSP_User3 for organization WholesalersMSP
+2026.08.11-09:24:48.925[32m info [39m [caliper] [IdentityManager] 	Adding User5 (admin=false) as User5 for organization FinanciersMSP
+2026.08.11-09:24:48.925[32m info [39m [caliper] [IdentityManager] 	Adding User0 (admin=true) as _WholesalersMSP_User0 for organization WholesalersMSP
+2026.08.11-09:24:48.925[32m info [39m [caliper] [IdentityManager] 	Adding User4 (admin=false) as _WholesalersMSP_User4 for organization WholesalersMSP
+2026.08.11-09:24:48.926[32m info [39m [caliper] [IdentityManager] 	Adding User0 (admin=true) as _WholesalersMSP_User0 for organization WholesalersMSP
+2026.08.11-09:24:48.926[32m info [39m [caliper] [IdentityManager] 	Adding User5 (admin=false) as _WholesalersMSP_User5 for organization WholesalersMSP
+2026.08.11-09:24:48.926[32m info [39m [caliper] [IdentityManager] 	Adding User1 (admin=false) as _WholesalersMSP_User1 for organization WholesalersMSP
+2026.08.11-09:24:48.927[32m info [39m [caliper] [IdentityManager] 	Adding User1 (admin=false) as _WholesalersMSP_User1 for organization WholesalersMSP
+2026.08.11-09:24:48.927[32m info [39m [caliper] [FabricConnectorFactory] 	Initializing gateway connector compatible with installed SDK: 2.2.20
+2026.08.11-09:24:48.927[32m info [39m [caliper] [IdentityManager] 	Adding User2 (admin=false) as _WholesalersMSP_User2 for organization WholesalersMSP
+2026.08.11-09:24:48.928[32m info [39m [caliper] [worker-message-handler] 	Worker#2 initialized
+2026.08.11-09:24:48.928[32m info [39m [caliper] [IdentityManager] 	Adding User3 (admin=false) as _WholesalersMSP_User3 for organization WholesalersMSP
+2026.08.11-09:24:48.929[32m info [39m [caliper] [IdentityManager] 	Adding User2 (admin=false) as _WholesalersMSP_User2 for organization WholesalersMSP
+2026.08.11-09:24:48.929[32m info [39m [caliper] [IdentityManager] 	Adding User4 (admin=false) as _WholesalersMSP_User4 for organization WholesalersMSP
+2026.08.11-09:24:48.930[32m info [39m [caliper] [IdentityManager] 	Adding User3 (admin=false) as _WholesalersMSP_User3 for organization WholesalersMSP
+2026.08.11-09:24:48.930[32m info [39m [caliper] [IdentityManager] 	Adding User5 (admin=false) as _WholesalersMSP_User5 for organization WholesalersMSP
+2026.08.11-09:24:48.931[32m info [39m [caliper] [IdentityManager] 	Adding User4 (admin=false) as _WholesalersMSP_User4 for organization WholesalersMSP
+2026.08.11-09:24:48.931[32m info [39m [caliper] [IdentityManager] 	Adding User5 (admin=false) as _WholesalersMSP_User5 for organization WholesalersMSP
+2026.08.11-09:24:48.932[32m info [39m [caliper] [worker-message-handler] 	Worker#1 initialized
+2026.08.11-09:24:48.933[32m info [39m [caliper] [worker-message-handler] 	Worker#4 initialized
+2026.08.11-09:24:48.936[32m info [39m [caliper] [IdentityManager] 	Adding User0 (admin=true) as User0 for organization FinanciersMSP
+2026.08.11-09:24:48.938[32m info [39m [caliper] [IdentityManager] 	Adding User1 (admin=false) as User1 for organization FinanciersMSP
+2026.08.11-09:24:48.938[32m info [39m [caliper] [IdentityManager] 	Adding User2 (admin=false) as User2 for organization FinanciersMSP
+2026.08.11-09:24:48.939[32m info [39m [caliper] [IdentityManager] 	Adding User3 (admin=false) as User3 for organization FinanciersMSP
+2026.08.11-09:24:48.940[32m info [39m [caliper] [IdentityManager] 	Adding User4 (admin=false) as User4 for organization FinanciersMSP
+2026.08.11-09:24:48.941[32m info [39m [caliper] [IdentityManager] 	Adding User5 (admin=false) as User5 for organization FinanciersMSP
+2026.08.11-09:24:48.941[32m info [39m [caliper] [IdentityManager] 	Adding User0 (admin=true) as _WholesalersMSP_User0 for organization WholesalersMSP
+2026.08.11-09:24:48.942[32m info [39m [caliper] [IdentityManager] 	Adding User1 (admin=false) as _WholesalersMSP_User1 for organization WholesalersMSP
+2026.08.11-09:24:48.943[32m info [39m [caliper] [IdentityManager] 	Adding User2 (admin=false) as _WholesalersMSP_User2 for organization WholesalersMSP
+2026.08.11-09:24:48.944[32m info [39m [caliper] [IdentityManager] 	Adding User3 (admin=false) as _WholesalersMSP_User3 for organization WholesalersMSP
+2026.08.11-09:24:48.944[32m info [39m [caliper] [IdentityManager] 	Adding User4 (admin=false) as _WholesalersMSP_User4 for organization WholesalersMSP
+2026.08.11-09:24:48.945[32m info [39m [caliper] [IdentityManager] 	Adding User5 (admin=false) as _WholesalersMSP_User5 for organization WholesalersMSP
+2026.08.11-09:24:48.947[32m info [39m [caliper] [worker-message-handler] 	Worker#0 initialized
+2026.08.11-09:24:48.948[32m info [39m [caliper] [worker-orchestrator] 	5 workers ready, progressing to test preparation phase.
+2026.08.11-09:24:48.948[32m info [39m [caliper] [round-orchestrator] 	Started round 1 (getallfinancerequests_round1@300)
+2026.08.11-09:24:48.948[32m info [39m [caliper] [worker-message-handler] 	Preparing Worker#0 for Round#0
+2026.08.11-09:24:48.949[32m info [39m [caliper] [worker-message-handler] 	Preparing Worker#1 for Round#0
+2026.08.11-09:24:48.949[32m info [39m [caliper] [worker-message-handler] 	Preparing Worker#2 for Round#0
+2026.08.11-09:24:48.949[32m info [39m [caliper] [worker-message-handler] 	Preparing Worker#3 for Round#0
+2026.08.11-09:24:48.949[32m info [39m [caliper] [worker-message-handler] 	Preparing Worker#4 for Round#0
+2026.08.11-09:24:48.951[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User0 to a Network Gateway
+2026.08.11-09:24:48.952[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User0 to a Network Gateway
+2026.08.11-09:24:48.952[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User0 to a Network Gateway
+2026.08.11-09:24:48.952[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User0 to a Network Gateway
+2026.08.11-09:24:48.952[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User0 to a Network Gateway
+2026.08.11-09:24:49.137[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User0 to a Network Gateway
+2026.08.11-09:24:49.137[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User0 to a Network Gateway
+2026.08.11-09:24:49.138[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User0
+2026.08.11-09:24:49.138[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User0
+2026.08.11-09:24:49.139[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User0 to a Network Gateway
+2026.08.11-09:24:49.140[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User0
+2026.08.11-09:24:49.146[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User0 to a Network Gateway
+2026.08.11-09:24:49.147[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User0
+2026.08.11-09:24:49.147[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User0 to a Network Gateway
+2026.08.11-09:24:49.147[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User0
+2026.08.11-09:24:49.235[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User1 to a Network Gateway
+2026.08.11-09:24:49.235[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User1 to a Network Gateway
+2026.08.11-09:24:49.236[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User1 to a Network Gateway
+2026.08.11-09:24:49.255[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User1 to a Network Gateway
+2026.08.11-09:24:49.262[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User1 to a Network Gateway
+2026.08.11-09:24:49.313[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User1 to a Network Gateway
+2026.08.11-09:24:49.313[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User1
+2026.08.11-09:24:49.321[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User1 to a Network Gateway
+2026.08.11-09:24:49.321[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User1
+2026.08.11-09:24:49.321[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User1 to a Network Gateway
+2026.08.11-09:24:49.322[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User1
+2026.08.11-09:24:49.337[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User1 to a Network Gateway
+2026.08.11-09:24:49.337[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User1
+2026.08.11-09:24:49.343[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User1 to a Network Gateway
+2026.08.11-09:24:49.343[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User1
+2026.08.11-09:24:49.372[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User2 to a Network Gateway
+2026.08.11-09:24:49.380[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User2 to a Network Gateway
+2026.08.11-09:24:49.381[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User2 to a Network Gateway
+2026.08.11-09:24:49.396[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User2 to a Network Gateway
+2026.08.11-09:24:49.402[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User2 to a Network Gateway
+2026.08.11-09:24:49.443[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User2 to a Network Gateway
+2026.08.11-09:24:49.443[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User2
+2026.08.11-09:24:49.451[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User2 to a Network Gateway
+2026.08.11-09:24:49.451[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User2
+2026.08.11-09:24:49.458[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User2 to a Network Gateway
+2026.08.11-09:24:49.458[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User2
+2026.08.11-09:24:49.467[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User2 to a Network Gateway
+2026.08.11-09:24:49.468[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User2
+2026.08.11-09:24:49.468[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User2 to a Network Gateway
+2026.08.11-09:24:49.468[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User2
+2026.08.11-09:24:49.502[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User3 to a Network Gateway
+2026.08.11-09:24:49.518[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User3 to a Network Gateway
+2026.08.11-09:24:49.520[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User3 to a Network Gateway
+2026.08.11-09:24:49.526[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User3 to a Network Gateway
+2026.08.11-09:24:49.528[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User3 to a Network Gateway
+2026.08.11-09:24:49.573[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User3 to a Network Gateway
+2026.08.11-09:24:49.573[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User3
+2026.08.11-09:24:49.587[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User3 to a Network Gateway
+2026.08.11-09:24:49.587[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User3
+2026.08.11-09:24:49.587[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User3 to a Network Gateway
+2026.08.11-09:24:49.588[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User3
+2026.08.11-09:24:49.591[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User3 to a Network Gateway
+2026.08.11-09:24:49.592[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User3
+2026.08.11-09:24:49.599[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User3 to a Network Gateway
+2026.08.11-09:24:49.599[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User3
+2026.08.11-09:24:49.627[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User4 to a Network Gateway
+2026.08.11-09:24:49.642[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User4 to a Network Gateway
+2026.08.11-09:24:49.646[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User4 to a Network Gateway
+2026.08.11-09:24:49.649[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User4 to a Network Gateway
+2026.08.11-09:24:49.654[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User4 to a Network Gateway
+2026.08.11-09:24:49.691[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User4 to a Network Gateway
+2026.08.11-09:24:49.692[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User4
+2026.08.11-09:24:49.711[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User4 to a Network Gateway
+2026.08.11-09:24:49.711[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User4 to a Network Gateway
+2026.08.11-09:24:49.711[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User4
+2026.08.11-09:24:49.711[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User4 to a Network Gateway
+2026.08.11-09:24:49.711[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User4
+2026.08.11-09:24:49.711[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User4
+2026.08.11-09:24:49.726[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User4 to a Network Gateway
+2026.08.11-09:24:49.726[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User4
+2026.08.11-09:24:49.765[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User5 to a Network Gateway
+2026.08.11-09:24:49.784[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User5 to a Network Gateway
+2026.08.11-09:24:49.785[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User5 to a Network Gateway
+2026.08.11-09:24:49.799[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User5 to a Network Gateway
+2026.08.11-09:24:49.809[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User5 to a Network Gateway
+2026.08.11-09:24:49.839[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User5 to a Network Gateway
+2026.08.11-09:24:49.839[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User5
+2026.08.11-09:24:49.850[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User5 to a Network Gateway
+2026.08.11-09:24:49.850[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User5
+2026.08.11-09:24:49.852[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User5 to a Network Gateway
+2026.08.11-09:24:49.852[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User5
+2026.08.11-09:24:49.863[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User5 to a Network Gateway
+2026.08.11-09:24:49.863[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User5
+2026.08.11-09:24:49.873[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User5 to a Network Gateway
+2026.08.11-09:24:49.873[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User5
+2026.08.11-09:24:49.893[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User0 to a Network Gateway
+2026.08.11-09:24:49.905[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User0 to a Network Gateway
+2026.08.11-09:24:49.908[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User0 to a Network Gateway
+2026.08.11-09:24:49.917[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User0 to a Network Gateway
+2026.08.11-09:24:49.928[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User0 to a Network Gateway
+2026.08.11-09:24:49.961[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User0 to a Network Gateway
+2026.08.11-09:24:49.962[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User0
+2026.08.11-09:24:49.971[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User0 to a Network Gateway
+2026.08.11-09:24:49.971[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User0
+2026.08.11-09:24:49.977[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User0 to a Network Gateway
+2026.08.11-09:24:49.977[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User0
+2026.08.11-09:24:49.987[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User0 to a Network Gateway
+2026.08.11-09:24:49.987[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User0
+2026.08.11-09:24:49.997[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User0 to a Network Gateway
+2026.08.11-09:24:49.997[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User0
+2026.08.11-09:24:50.014[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User1 to a Network Gateway
+2026.08.11-09:24:50.025[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User1 to a Network Gateway
+2026.08.11-09:24:50.034[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User1 to a Network Gateway
+2026.08.11-09:24:50.045[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User1 to a Network Gateway
+2026.08.11-09:24:50.050[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User1 to a Network Gateway
+2026.08.11-09:24:50.080[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User1 to a Network Gateway
+2026.08.11-09:24:50.080[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User1
+2026.08.11-09:24:50.093[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User1 to a Network Gateway
+2026.08.11-09:24:50.093[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User1
+2026.08.11-09:24:50.099[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User1 to a Network Gateway
+2026.08.11-09:24:50.099[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User1
+2026.08.11-09:24:50.112[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User1 to a Network Gateway
+2026.08.11-09:24:50.112[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User1
+2026.08.11-09:24:50.117[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User1 to a Network Gateway
+2026.08.11-09:24:50.117[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User1
+2026.08.11-09:24:50.142[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User2 to a Network Gateway
+2026.08.11-09:24:50.154[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User2 to a Network Gateway
+2026.08.11-09:24:50.164[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User2 to a Network Gateway
+2026.08.11-09:24:50.174[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User2 to a Network Gateway
+2026.08.11-09:24:50.174[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User2 to a Network Gateway
+2026.08.11-09:24:50.213[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User2 to a Network Gateway
+2026.08.11-09:24:50.213[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User2
+2026.08.11-09:24:50.225[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User2 to a Network Gateway
+2026.08.11-09:24:50.225[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User2
+2026.08.11-09:24:50.231[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User2 to a Network Gateway
+2026.08.11-09:24:50.231[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User2
+2026.08.11-09:24:50.244[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User2 to a Network Gateway
+2026.08.11-09:24:50.244[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User2
+2026.08.11-09:24:50.245[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User2 to a Network Gateway
+2026.08.11-09:24:50.246[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User2
+2026.08.11-09:24:50.275[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User3 to a Network Gateway
+2026.08.11-09:24:50.289[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User3 to a Network Gateway
+2026.08.11-09:24:50.297[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User3 to a Network Gateway
+2026.08.11-09:24:50.307[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User3 to a Network Gateway
+2026.08.11-09:24:50.310[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User3 to a Network Gateway
+2026.08.11-09:24:50.349[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User3 to a Network Gateway
+2026.08.11-09:24:50.350[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User3
+2026.08.11-09:24:50.356[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User3 to a Network Gateway
+2026.08.11-09:24:50.356[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User3
+2026.08.11-09:24:50.364[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User3 to a Network Gateway
+2026.08.11-09:24:50.365[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User3
+2026.08.11-09:24:50.377[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User3 to a Network Gateway
+2026.08.11-09:24:50.377[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User3
+2026.08.11-09:24:50.385[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User3 to a Network Gateway
+2026.08.11-09:24:50.386[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User3
+2026.08.11-09:24:50.415[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User4 to a Network Gateway
+2026.08.11-09:24:50.421[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User4 to a Network Gateway
+2026.08.11-09:24:50.430[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User4 to a Network Gateway
+2026.08.11-09:24:50.437[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User4 to a Network Gateway
+2026.08.11-09:24:50.449[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User4 to a Network Gateway
+2026.08.11-09:24:50.483[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User4 to a Network Gateway
+2026.08.11-09:24:50.483[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User4
+2026.08.11-09:24:50.487[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User4 to a Network Gateway
+2026.08.11-09:24:50.487[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User4
+2026.08.11-09:24:50.498[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User4 to a Network Gateway
+2026.08.11-09:24:50.499[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User4
+2026.08.11-09:24:50.500[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User4 to a Network Gateway
+2026.08.11-09:24:50.500[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User4
+2026.08.11-09:24:50.513[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User4 to a Network Gateway
+2026.08.11-09:24:50.513[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User4
+2026.08.11-09:24:50.549[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User5 to a Network Gateway
+2026.08.11-09:24:50.551[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User5 to a Network Gateway
+2026.08.11-09:24:50.562[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User5 to a Network Gateway
+2026.08.11-09:24:50.562[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User5 to a Network Gateway
+2026.08.11-09:24:50.573[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User5 to a Network Gateway
+2026.08.11-09:24:50.614[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User5 to a Network Gateway
+2026.08.11-09:24:50.614[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User5
+2026.08.11-09:24:50.614[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User5 to a Network Gateway
+2026.08.11-09:24:50.614[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User5
+2026.08.11-09:24:50.624[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User5 to a Network Gateway
+2026.08.11-09:24:50.624[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User5
+2026.08.11-09:24:50.627[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User5 to a Network Gateway
+2026.08.11-09:24:50.627[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User5
+2026.08.11-09:24:50.634[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User5 to a Network Gateway
+2026.08.11-09:24:50.634[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User5
+2026.08.11-09:24:50.692[32m info [39m [caliper] [caliper-worker] 	Info: worker 2 prepare test phase for round 0 is starting...
+2026.08.11-09:24:50.693[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User0
+2026.08.11-09:24:50.696[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User1
+2026.08.11-09:24:50.696[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User2
+2026.08.11-09:24:50.697[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User3
+2026.08.11-09:24:50.698[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User4
+2026.08.11-09:24:50.698[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User5
+2026.08.11-09:24:50.699[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User0
+2026.08.11-09:24:50.699[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User1
+2026.08.11-09:24:50.699[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User2
+2026.08.11-09:24:50.700[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User3
+2026.08.11-09:24:50.700[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User4
+2026.08.11-09:24:50.700[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User5
+2026.08.11-09:24:50.701[32m info [39m [caliper] [caliper-worker] 	Info: worker 2 prepare test phase for round 0 is completed
+2026.08.11-09:24:50.701[32m info [39m [caliper] [worker-message-handler] 	Worker#2 prepared for Round#0
+2026.08.11-09:24:50.715[32m info [39m [caliper] [caliper-worker] 	Info: worker 0 prepare test phase for round 0 is starting...
+2026.08.11-09:24:50.717[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User0
+2026.08.11-09:24:50.719[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User1
+2026.08.11-09:24:50.719[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User2
+2026.08.11-09:24:50.719[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User3
+2026.08.11-09:24:50.720[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User4
+2026.08.11-09:24:50.720[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User5
+2026.08.11-09:24:50.721[32m info [39m [caliper] [caliper-worker] 	Info: worker 3 prepare test phase for round 0 is starting...
+2026.08.11-09:24:50.721[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User0
+2026.08.11-09:24:50.721[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User1
+2026.08.11-09:24:50.721[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User2
+2026.08.11-09:24:50.721[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User0
+2026.08.11-09:24:50.721[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User3
+2026.08.11-09:24:50.722[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User4
+2026.08.11-09:24:50.722[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User5
+2026.08.11-09:24:50.722[32m info [39m [caliper] [caliper-worker] 	Info: worker 0 prepare test phase for round 0 is completed
+2026.08.11-09:24:50.722[32m info [39m [caliper] [worker-message-handler] 	Worker#0 prepared for Round#0
+2026.08.11-09:24:50.723[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User1
+2026.08.11-09:24:50.723[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User2
+2026.08.11-09:24:50.724[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User3
+2026.08.11-09:24:50.724[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User4
+2026.08.11-09:24:50.725[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User5
+2026.08.11-09:24:50.726[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User0
+2026.08.11-09:24:50.726[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User1
+2026.08.11-09:24:50.727[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User2
+2026.08.11-09:24:50.727[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User3
+2026.08.11-09:24:50.727[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User4
+2026.08.11-09:24:50.728[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User5
+2026.08.11-09:24:50.728[32m info [39m [caliper] [caliper-worker] 	Info: worker 3 prepare test phase for round 0 is completed
+2026.08.11-09:24:50.729[32m info [39m [caliper] [worker-message-handler] 	Worker#3 prepared for Round#0
+2026.08.11-09:24:50.732[32m info [39m [caliper] [caliper-worker] 	Info: worker 1 prepare test phase for round 0 is starting...
+2026.08.11-09:24:50.732[32m info [39m [caliper] [caliper-worker] 	Info: worker 4 prepare test phase for round 0 is starting...
+2026.08.11-09:24:50.734[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User0
+2026.08.11-09:24:50.734[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User0
+2026.08.11-09:24:50.736[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User1
+2026.08.11-09:24:50.736[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User1
+2026.08.11-09:24:50.736[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User2
+2026.08.11-09:24:50.736[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User2
+2026.08.11-09:24:50.737[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User3
+2026.08.11-09:24:50.737[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User3
+2026.08.11-09:24:50.738[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User4
+2026.08.11-09:24:50.738[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User4
+2026.08.11-09:24:50.738[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User5
+2026.08.11-09:24:50.739[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User5
+2026.08.11-09:24:50.739[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User0
+2026.08.11-09:24:50.739[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User0
+2026.08.11-09:24:50.739[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User1
+2026.08.11-09:24:50.739[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User1
+2026.08.11-09:24:50.740[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User2
+2026.08.11-09:24:50.740[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User2
+2026.08.11-09:24:50.740[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User3
+2026.08.11-09:24:50.740[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User3
+2026.08.11-09:24:50.741[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User4
+2026.08.11-09:24:50.741[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User4
+2026.08.11-09:24:50.741[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User5
+2026.08.11-09:24:50.741[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User5
+2026.08.11-09:24:50.742[32m info [39m [caliper] [caliper-worker] 	Info: worker 4 prepare test phase for round 0 is completed
+2026.08.11-09:24:50.742[32m info [39m [caliper] [caliper-worker] 	Info: worker 1 prepare test phase for round 0 is completed
+2026.08.11-09:24:50.742[32m info [39m [caliper] [worker-message-handler] 	Worker#4 prepared for Round#0
+2026.08.11-09:24:50.742[32m info [39m [caliper] [worker-message-handler] 	Worker#1 prepared for Round#0
+2026.08.11-09:24:50.745[32m info [39m [caliper] [worker-orchestrator] 	5 workers prepared, progressing to test phase.
+2026.08.11-09:24:50.745[32m info [39m [caliper] [round-orchestrator] 	Monitors successfully started
+2026.08.11-09:24:50.748[32m info [39m [caliper] [worker-message-handler] 	Worker#2 is starting Round#0
+2026.08.11-09:24:50.749[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User0 to a Network Gateway
+2026.08.11-09:24:50.749[32m info [39m [caliper] [worker-message-handler] 	Worker#1 is starting Round#0
+2026.08.11-09:24:50.750[32m info [39m [caliper] [worker-message-handler] 	Worker#4 is starting Round#0
+2026.08.11-09:24:50.750[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User0 to a Network Gateway
+2026.08.11-09:24:50.750[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User0 to a Network Gateway
+2026.08.11-09:24:50.754[32m info [39m [caliper] [worker-message-handler] 	Worker#3 is starting Round#0
+2026.08.11-09:24:50.754[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User0 to a Network Gateway
+2026.08.11-09:24:50.760[32m info [39m [caliper] [worker-message-handler] 	Worker#0 is starting Round#0
+2026.08.11-09:24:50.761[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User0 to a Network Gateway
+2026.08.11-09:24:50.827[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User0 to a Network Gateway
+2026.08.11-09:24:50.827[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User0
+2026.08.11-09:24:50.830[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User0 to a Network Gateway
+2026.08.11-09:24:50.831[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User0
+2026.08.11-09:24:50.834[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User0 to a Network Gateway
+2026.08.11-09:24:50.835[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User0
+2026.08.11-09:24:50.843[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User0 to a Network Gateway
+2026.08.11-09:24:50.843[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User0
+2026.08.11-09:24:50.849[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User0 to a Network Gateway
+2026.08.11-09:24:50.849[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User0
+2026.08.11-09:24:50.889[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User1 to a Network Gateway
+2026.08.11-09:24:50.893[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User1 to a Network Gateway
+2026.08.11-09:24:50.894[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User1 to a Network Gateway
+2026.08.11-09:24:50.899[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User1 to a Network Gateway
+2026.08.11-09:24:50.905[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User1 to a Network Gateway
+2026.08.11-09:24:50.952[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User1 to a Network Gateway
+2026.08.11-09:24:50.952[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User1
+2026.08.11-09:24:50.953[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User1 to a Network Gateway
+2026.08.11-09:24:50.953[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User1
+2026.08.11-09:24:50.961[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User1 to a Network Gateway
+2026.08.11-09:24:50.961[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User1
+2026.08.11-09:24:50.961[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User1 to a Network Gateway
+2026.08.11-09:24:50.962[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User1
+2026.08.11-09:24:50.969[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User1 to a Network Gateway
+2026.08.11-09:24:50.969[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User1
+2026.08.11-09:24:51.004[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User2 to a Network Gateway
+2026.08.11-09:24:51.009[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User2 to a Network Gateway
+2026.08.11-09:24:51.015[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User2 to a Network Gateway
+2026.08.11-09:24:51.016[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User2 to a Network Gateway
+2026.08.11-09:24:51.021[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User2 to a Network Gateway
+2026.08.11-09:24:51.068[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User2 to a Network Gateway
+2026.08.11-09:24:51.068[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User2
+2026.08.11-09:24:51.074[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User2 to a Network Gateway
+2026.08.11-09:24:51.074[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User2
+2026.08.11-09:24:51.077[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User2 to a Network Gateway
+2026.08.11-09:24:51.077[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User2
+2026.08.11-09:24:51.081[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User2 to a Network Gateway
+2026.08.11-09:24:51.081[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User2
+2026.08.11-09:24:51.091[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User2 to a Network Gateway
+2026.08.11-09:24:51.091[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User2
+2026.08.11-09:24:51.122[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User3 to a Network Gateway
+2026.08.11-09:24:51.128[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User3 to a Network Gateway
+2026.08.11-09:24:51.130[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User3 to a Network Gateway
+2026.08.11-09:24:51.136[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User3 to a Network Gateway
+2026.08.11-09:24:51.143[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User3 to a Network Gateway
+2026.08.11-09:24:51.193[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User3 to a Network Gateway
+2026.08.11-09:24:51.193[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User3 to a Network Gateway
+2026.08.11-09:24:51.193[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User3
+2026.08.11-09:24:51.193[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User3
+2026.08.11-09:24:51.200[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User3 to a Network Gateway
+2026.08.11-09:24:51.200[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User3
+2026.08.11-09:24:51.204[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User3 to a Network Gateway
+2026.08.11-09:24:51.205[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User3
+2026.08.11-09:24:51.213[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User3 to a Network Gateway
+2026.08.11-09:24:51.213[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User3
+2026.08.11-09:24:51.248[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User4 to a Network Gateway
+2026.08.11-09:24:51.249[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User4 to a Network Gateway
+2026.08.11-09:24:51.256[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User4 to a Network Gateway
+2026.08.11-09:24:51.260[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User4 to a Network Gateway
+2026.08.11-09:24:51.264[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User4 to a Network Gateway
+2026.08.11-09:24:51.312[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User4 to a Network Gateway
+2026.08.11-09:24:51.312[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User4 to a Network Gateway
+2026.08.11-09:24:51.312[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User4
+2026.08.11-09:24:51.312[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User4
+2026.08.11-09:24:51.318[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User4 to a Network Gateway
+2026.08.11-09:24:51.319[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User4
+2026.08.11-09:24:51.325[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User4 to a Network Gateway
+2026.08.11-09:24:51.325[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User4
+2026.08.11-09:24:51.329[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User4 to a Network Gateway
+2026.08.11-09:24:51.330[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User4
+2026.08.11-09:24:51.366[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User5 to a Network Gateway
+2026.08.11-09:24:51.374[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User5 to a Network Gateway
+2026.08.11-09:24:51.378[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User5 to a Network Gateway
+2026.08.11-09:24:51.379[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User5 to a Network Gateway
+2026.08.11-09:24:51.382[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity User5 to a Network Gateway
+2026.08.11-09:24:51.433[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User5 to a Network Gateway
+2026.08.11-09:24:51.433[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User5
+2026.08.11-09:24:51.439[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User5 to a Network Gateway
+2026.08.11-09:24:51.439[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User5 to a Network Gateway
+2026.08.11-09:24:51.440[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User5
+2026.08.11-09:24:51.440[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User5
+2026.08.11-09:24:51.444[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User5 to a Network Gateway
+2026.08.11-09:24:51.444[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User5
+2026.08.11-09:24:51.446[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity User5 to a Network Gateway
+2026.08.11-09:24:51.446[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user User5
+2026.08.11-09:24:51.488[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User0 to a Network Gateway
+2026.08.11-09:24:51.491[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User0 to a Network Gateway
+2026.08.11-09:24:51.492[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User0 to a Network Gateway
+2026.08.11-09:24:51.497[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User0 to a Network Gateway
+2026.08.11-09:24:51.498[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User0 to a Network Gateway
+2026.08.11-09:24:51.551[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User0 to a Network Gateway
+2026.08.11-09:24:51.551[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User0
+2026.08.11-09:24:51.552[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User0 to a Network Gateway
+2026.08.11-09:24:51.552[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User0
+2026.08.11-09:24:51.557[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User0 to a Network Gateway
+2026.08.11-09:24:51.557[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User0
+2026.08.11-09:24:51.559[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User0 to a Network Gateway
+2026.08.11-09:24:51.559[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User0
+2026.08.11-09:24:51.563[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User0 to a Network Gateway
+2026.08.11-09:24:51.563[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User0
+2026.08.11-09:24:51.602[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User1 to a Network Gateway
+2026.08.11-09:24:51.602[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User1 to a Network Gateway
+2026.08.11-09:24:51.608[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User1 to a Network Gateway
+2026.08.11-09:24:51.610[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User1 to a Network Gateway
+2026.08.11-09:24:51.612[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User1 to a Network Gateway
+2026.08.11-09:24:51.663[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User1 to a Network Gateway
+2026.08.11-09:24:51.663[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User1
+2026.08.11-09:24:51.669[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User1 to a Network Gateway
+2026.08.11-09:24:51.669[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User1
+2026.08.11-09:24:51.671[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User1 to a Network Gateway
+2026.08.11-09:24:51.672[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User1
+2026.08.11-09:24:51.674[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User1 to a Network Gateway
+2026.08.11-09:24:51.675[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User1
+2026.08.11-09:24:51.682[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User1 to a Network Gateway
+2026.08.11-09:24:51.683[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User1
+2026.08.11-09:24:51.715[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User2 to a Network Gateway
+2026.08.11-09:24:51.723[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User2 to a Network Gateway
+2026.08.11-09:24:51.724[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User2 to a Network Gateway
+2026.08.11-09:24:51.724[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User2 to a Network Gateway
+2026.08.11-09:24:51.734[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User2 to a Network Gateway
+2026.08.11-09:24:51.781[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User2 to a Network Gateway
+2026.08.11-09:24:51.781[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User2
+2026.08.11-09:24:51.787[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User2 to a Network Gateway
+2026.08.11-09:24:51.787[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User2
+2026.08.11-09:24:51.789[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User2 to a Network Gateway
+2026.08.11-09:24:51.790[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User2
+2026.08.11-09:24:51.792[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User2 to a Network Gateway
+2026.08.11-09:24:51.793[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User2
+2026.08.11-09:24:51.801[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User2 to a Network Gateway
+2026.08.11-09:24:51.801[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User2
+2026.08.11-09:24:51.836[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User3 to a Network Gateway
+2026.08.11-09:24:51.839[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User3 to a Network Gateway
+2026.08.11-09:24:51.841[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User3 to a Network Gateway
+2026.08.11-09:24:51.846[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User3 to a Network Gateway
+2026.08.11-09:24:51.853[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User3 to a Network Gateway
+2026.08.11-09:24:51.898[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User3 to a Network Gateway
+2026.08.11-09:24:51.898[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User3
+2026.08.11-09:24:51.905[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User3 to a Network Gateway
+2026.08.11-09:24:51.905[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User3
+2026.08.11-09:24:51.911[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User3 to a Network Gateway
+2026.08.11-09:24:51.911[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User3
+2026.08.11-09:24:51.911[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User3 to a Network Gateway
+2026.08.11-09:24:51.911[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User3
+2026.08.11-09:24:51.922[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User3 to a Network Gateway
+2026.08.11-09:24:51.922[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User3
+2026.08.11-09:24:51.947[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User4 to a Network Gateway
+2026.08.11-09:24:51.957[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User4 to a Network Gateway
+2026.08.11-09:24:51.963[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User4 to a Network Gateway
+2026.08.11-09:24:51.967[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User4 to a Network Gateway
+2026.08.11-09:24:51.973[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User4 to a Network Gateway
+2026.08.11-09:24:52.009[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User4 to a Network Gateway
+2026.08.11-09:24:52.009[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User4
+2026.08.11-09:24:52.025[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User4 to a Network Gateway
+2026.08.11-09:24:52.025[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User4
+2026.08.11-09:24:52.030[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User4 to a Network Gateway
+2026.08.11-09:24:52.030[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User4
+2026.08.11-09:24:52.035[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User4 to a Network Gateway
+2026.08.11-09:24:52.035[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User4
+2026.08.11-09:24:52.044[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User4 to a Network Gateway
+2026.08.11-09:24:52.044[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User4
+2026.08.11-09:24:52.071[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User5 to a Network Gateway
+2026.08.11-09:24:52.083[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User5 to a Network Gateway
+2026.08.11-09:24:52.094[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User5 to a Network Gateway
+2026.08.11-09:24:52.094[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User5 to a Network Gateway
+2026.08.11-09:24:52.100[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Connecting user with identity _WholesalersMSP_User5 to a Network Gateway
+2026.08.11-09:24:52.138[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User5 to a Network Gateway
+2026.08.11-09:24:52.138[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User5
+2026.08.11-09:24:52.144[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User5 to a Network Gateway
+2026.08.11-09:24:52.144[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User5
+2026.08.11-09:24:52.161[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User5 to a Network Gateway
+2026.08.11-09:24:52.161[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User5
+2026.08.11-09:24:52.170[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User5 to a Network Gateway
+2026.08.11-09:24:52.170[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User5
+2026.08.11-09:24:52.175[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Successfully connected user with identity _WholesalersMSP_User5 to a Network Gateway
+2026.08.11-09:24:52.175[32m info [39m [caliper] [connectors/v2/FabricGateway] 	Generating contract map for user _WholesalersMSP_User5
+2026.08.11-09:24:52.195[32m info [39m [caliper] [caliper-worker] 	Worker #0 starting workload loop
+2026.08.11-09:24:52.201[32m info [39m [caliper] [caliper-worker] 	Worker #2 starting workload loop
+2026.08.11-09:24:52.223[32m info [39m [caliper] [caliper-worker] 	Worker #3 starting workload loop
+2026.08.11-09:24:52.234[32m info [39m [caliper] [caliper-worker] 	Worker #1 starting workload loop
+2026.08.11-09:24:52.238[32m info [39m [caliper] [caliper-worker] 	Worker #4 starting workload loop
+
+📊 ===== GetAllFinanceRequests Worker 0 Summary =====
+   📦 Total Payload       : 0.1172 KB
+   📏 Avg Payload         : 2.00 bytes
+   📐 Max Payload         : 2 bytes
+   🧮 Payload Samples     : 60
+2026.08.11-09:24:54.283[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User0
+2026.08.11-09:24:54.283[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User1
+2026.08.11-09:24:54.283[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User2
+2026.08.11-09:24:54.284[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User3
+2026.08.11-09:24:54.284[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User4
+2026.08.11-09:24:54.284[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User5
+2026.08.11-09:24:54.285[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User0
+2026.08.11-09:24:54.285[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User1
+2026.08.11-09:24:54.285[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User2
+2026.08.11-09:24:54.285[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User3
+2026.08.11-09:24:54.286[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User4
+2026.08.11-09:24:54.286[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User5
+2026.08.11-09:24:54.286[32m info [39m [caliper] [worker-message-handler] 	Worker#0 finished Round#0
+
+📊 ===== GetAllFinanceRequests Worker 2 Summary =====
+   📦 Total Payload       : 0.1172 KB
+   📏 Avg Payload         : 2.00 bytes
+   📐 Max Payload         : 2 bytes
+   🧮 Payload Samples     : 60
+2026.08.11-09:24:54.288[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User0
+2026.08.11-09:24:54.288[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User1
+2026.08.11-09:24:54.289[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User2
+2026.08.11-09:24:54.289[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User3
+2026.08.11-09:24:54.289[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User4
+2026.08.11-09:24:54.290[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User5
+2026.08.11-09:24:54.291[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User0
+2026.08.11-09:24:54.291[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User1
+2026.08.11-09:24:54.291[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User2
+2026.08.11-09:24:54.292[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User3
+2026.08.11-09:24:54.292[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User4
+2026.08.11-09:24:54.293[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User5
+2026.08.11-09:24:54.293[32m info [39m [caliper] [worker-message-handler] 	Worker#2 finished Round#0
+
+📊 ===== GetAllFinanceRequests Worker 3 Summary =====
+   📦 Total Payload       : 0.1172 KB
+   📏 Avg Payload         : 2.00 bytes
+   📐 Max Payload         : 2 bytes
+   🧮 Payload Samples     : 60
+2026.08.11-09:24:54.312[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User0
+2026.08.11-09:24:54.312[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User1
+2026.08.11-09:24:54.313[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User2
+2026.08.11-09:24:54.313[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User3
+2026.08.11-09:24:54.314[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User4
+2026.08.11-09:24:54.314[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User5
+2026.08.11-09:24:54.314[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User0
+2026.08.11-09:24:54.315[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User1
+2026.08.11-09:24:54.315[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User2
+2026.08.11-09:24:54.315[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User3
+2026.08.11-09:24:54.315[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User4
+2026.08.11-09:24:54.316[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User5
+2026.08.11-09:24:54.316[32m info [39m [caliper] [worker-message-handler] 	Worker#3 finished Round#0
+
+📊 ===== GetAllFinanceRequests Worker 1 Summary =====
+   📦 Total Payload       : 0.1172 KB
+   📏 Avg Payload         : 2.00 bytes
+   📐 Max Payload         : 2 bytes
+   🧮 Payload Samples     : 60
+2026.08.11-09:24:54.324[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User0
+2026.08.11-09:24:54.324[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User1
+
+📊 ===== GetAllFinanceRequests Worker 4 Summary =====
+   📦 Total Payload       : 0.1172 KB
+   📏 Avg Payload         : 2.00 bytes
+   📐 Max Payload         : 2 bytes
+   🧮 Payload Samples     : 60
+2026.08.11-09:24:54.325[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User2
+2026.08.11-09:24:54.325[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User0
+2026.08.11-09:24:54.325[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User3
+2026.08.11-09:24:54.326[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User1
+2026.08.11-09:24:54.326[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User4
+2026.08.11-09:24:54.326[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User2
+2026.08.11-09:24:54.326[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User5
+2026.08.11-09:24:54.327[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User3
+2026.08.11-09:24:54.327[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User0
+2026.08.11-09:24:54.327[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User4
+2026.08.11-09:24:54.327[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User1
+2026.08.11-09:24:54.328[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user User5
+2026.08.11-09:24:54.328[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User0
+2026.08.11-09:24:54.328[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User2
+2026.08.11-09:24:54.328[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User3
+2026.08.11-09:24:54.328[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User1
+2026.08.11-09:24:54.328[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User4
+2026.08.11-09:24:54.329[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User2
+2026.08.11-09:24:54.329[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User5
+2026.08.11-09:24:54.329[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User3
+2026.08.11-09:24:54.329[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User4
+2026.08.11-09:24:54.329[32m info [39m [caliper] [worker-message-handler] 	Worker#1 finished Round#0
+2026.08.11-09:24:54.329[32m info [39m [caliper] [connectors/v2/FabricGateway] 	disconnecting gateway for user _WholesalersMSP_User5
+2026.08.11-09:24:54.330[32m info [39m [caliper] [worker-message-handler] 	Worker#4 finished Round#0
+2026.08.11-09:24:59.341[32m info [39m [caliper] [default-observer] 	Resetting txCount indicator count
+2026.08.11-09:24:59.342[32m info [39m [caliper] [report-builder] 	### Test result ###
+2026.08.11-09:24:59.345[32m info [39m [caliper] [report-builder] 	
++----------------------------------+------+------+-----------------+-----------------+-----------------+-----------------+------------------+
+| Name                             | Succ | Fail | Send Rate (TPS) | Max Latency (s) | Min Latency (s) | Avg Latency (s) | Throughput (TPS) |
+|----------------------------------|------|------|-----------------|-----------------|-----------------|-----------------|------------------|
+| getallfinancerequests_round1@300 | 300  | 0    | 295.0           | 0.06            | 0.01            | 0.02            | 287.9            |
++----------------------------------+------+------+-----------------+-----------------+-----------------+-----------------+------------------+
+
+2026.08.11-09:24:59.346[32m info [39m [caliper] [round-orchestrator] 	Finished round 1 (getallfinancerequests_round1@300) in 1.128 seconds
+2026.08.11-09:24:59.346[32m info [39m [caliper] [monitor.js] 	Stopping all monitors
+2026.08.11-09:24:59.346[32m info [39m [caliper] [report-builder] 	### All test results ###
+2026.08.11-09:24:59.347[32m info [39m [caliper] [report-builder] 	
++----------------------------------+------+------+-----------------+-----------------+-----------------+-----------------+------------------+
+| Name                             | Succ | Fail | Send Rate (TPS) | Max Latency (s) | Min Latency (s) | Avg Latency (s) | Throughput (TPS) |
+|----------------------------------|------|------|-----------------|-----------------|-----------------|-----------------|------------------|
+| getallfinancerequests_round1@300 | 300  | 0    | 295.0           | 0.06            | 0.01            | 0.02            | 287.9            |
++----------------------------------+------+------+-----------------+-----------------+-----------------+-----------------+------------------+
+
+2026.08.11-09:24:59.353[32m info [39m [caliper] [report-builder] 	Generated report with path /home/dhanish/fabric_sfc/caliper-bench/report.html
+2026.08.11-09:24:59.354[32m info [39m [caliper] [monitor.js] 	Stopping all monitors
+2026.08.11-09:24:59.354[32m info [39m [caliper] [worker-orchestrator] 	Sending exit message to connected workers
+2026.08.11-09:24:59.354[32m info [39m [caliper] [round-orchestrator] 	Benchmark finished in 10.406 seconds. Total rounds: 1. Successful rounds: 1. Failed rounds: 0.
+2026.08.11-09:24:59.354[32m info [39m [caliper] [caliper-engine] 	Network configuration attribute "caliper.command.end" is not present, skipping end command
+2026.08.11-09:24:59.354[32m info [39m [caliper] [cli-launch-manager] 	Benchmark successfully finished!
+2026.08.11-09:24:59.354[32m info [39m [caliper] [worker-message-handler] 	Worker#0 is exiting
+2026.08.11-09:24:59.354[32m info [39m [caliper] [worker-message-handler] 	Worker#1 is exiting
+2026.08.11-09:24:59.354[32m info [39m [caliper] [worker-message-handler] 	Worker#2 is exiting
+2026.08.11-09:24:59.355[32m info [39m [caliper] [worker-message-handler] 	Worker#3 is exiting
+2026.08.11-09:24:59.355[32m info [39m [caliper] [worker-message-handler] 	Worker#4 is exiting

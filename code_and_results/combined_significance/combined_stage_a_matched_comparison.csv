@@ -1,0 +1,2 @@
+matched_comparison,wins,other_mean_return_pct,baseline_mean_return_pct,delta_return_pp,delta_default_count_rate_pp,mean_net_profit_diff
+FedAvg (federated) vs. Isolated RL,105/204,163.70757662448045,163.67441800798895,0.0331586164915052,-0.49377370964635986,48853.38288071146
